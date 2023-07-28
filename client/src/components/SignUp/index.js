@@ -12,6 +12,7 @@ import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../utils/mutations';
+import Auth from '../utils/auth'
 
 const defaultTheme = createTheme();
 
@@ -37,7 +38,7 @@ const SignUp = () => {
       const { data } = await addUser({
         variables: { ...formState },
       });
-
+      Auth.login(data.user.token)
       // You can add any logic here that you want to perform after successful sign-up
 
     } catch (e) {

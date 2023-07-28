@@ -30,6 +30,7 @@ class AuthService {
   login(idToken) {
     localStorage.setItem('id_token', idToken);
     window.location.assign('/');
+    //^ change this / to the url of our choice once built
   }
 
   logout() {
