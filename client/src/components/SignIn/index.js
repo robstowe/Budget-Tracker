@@ -55,6 +55,7 @@ const Login = (props) => {
       });
 
       Auth.login(data.login.token);
+      // history.push
     } catch (e) {
       console.error(e);
     }
@@ -64,6 +65,7 @@ const Login = (props) => {
       email: '',
       password: '',
     });
+    
   };
 
   return (
