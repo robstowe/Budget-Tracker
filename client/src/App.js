@@ -8,6 +8,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SignIn from './components/SignIn/';
+import SignUp from './components/SignUp'
 
 
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -44,6 +45,9 @@ export default function App() {
                     <Route
                         path="/"
                         element={<SignIn />}/>
+                    <Route
+                        path="/sign-up"
+                        element={<SignUp />}/>    
                 </Routes>
 
 
