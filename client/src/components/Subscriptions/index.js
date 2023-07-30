@@ -1,7 +1,8 @@
-import React from 'react'
+import React from 'react';
+import Navbar from '../Navbar';
 
 export default function Subs() {
   return (
-    <div>HELLO</div>
+    <Navbar />
   )
 }
