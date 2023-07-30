@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SignIn from './components/SignIn/';
 import SignUp from './components/SignUp'
 import Dashboard from './components/Dashboard'
-import Chart from './components/Dashboard/chart'
+import Chart from './components/Subscriptions/chart'
 import Navbar from './components/Navbar';
 
 
@@ -51,7 +51,7 @@ export default function App() {
           <Route path="/dashboard" element={
             <React.Fragment>
               <Navbar /> {/* Navbar will be displayed only on the Dashboard page */}
-              <Dashboard />
+              
             </React.Fragment>
           } />
           <Route
@@ -59,7 +59,7 @@ export default function App() {
             element={<SignUp />} />
             
         </Routes>
-        <Chart />
+       
 
       </Router>
     </ApolloProvider>
