@@ -70,8 +70,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SignIn from './components/SignIn/';
 import SignUp from './components/SignUp'
 import Dashboard from './components/Dashboard'
-import Home from './components/Home'
-import Chart from './components/Home/chart'
+import Chart from './components/Dashboard/chart'
 
 
 import 'bootstrap/dist/css/bootstrap.min.css'
