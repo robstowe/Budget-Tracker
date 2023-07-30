@@ -9,9 +9,10 @@ import { setContext } from '@apollo/client/link/context';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SignIn from './components/SignIn/';
 import SignUp from './components/SignUp'
-import Dashboard from './components/Dashboard'
-import Chart from './components/Subscriptions/chart'
 import Navbar from './components/Navbar';
+import Subs from './components/Subscriptions'
+import Leisure from './components/Leisure'
+import Utilities from './components/Utilities'
 
 
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -51,9 +52,20 @@ export default function App() {
           <Route path="/dashboard" element={
             <React.Fragment>
               <Navbar /> {/* Navbar will be displayed only on the Dashboard page */}
-              
             </React.Fragment>
+
           } />
+          <Route 
+          path="/Subs"
+          element= {
+          <Subs/>}
+          />
+          <Route
+            path="/Leisure"
+            element={<Leisure />} />
+            <Route
+            path="/Utilities"
+            element={<Utilities />} />
           <Route
             path="/sign-up"
             element={<SignUp />} />
