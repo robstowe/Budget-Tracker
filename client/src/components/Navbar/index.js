@@ -1,3 +1,4 @@
+
 import * as React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -18,6 +19,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import Dashboard from '../Dashboard'; 
 
 const drawerWidth = 240;
 
@@ -47,7 +49,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'flex-end',
   padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
+  
   ...theme.mixins.toolbar,
 }));
 
@@ -177,6 +179,7 @@ export default function MiniDrawer() {
           ))}
         </List>
       </Drawer>
+      <Dashboard open={open} />
     </Box>
   );
 }
