@@ -11,6 +11,7 @@ import SignIn from './components/SignIn/';
 import SignUp from './components/SignUp'
 import Dashboard from './components/Dashboard'
 import Chart from './components/Dashboard/chart'
+import Navbar from './components/Navbar';
 
 
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -42,14 +43,17 @@ export default function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-
+        
         <Routes>
           <Route
             path="/"
             element={<SignIn />} />
-          <Route
-            path="/dashboard"
-            element={<Dashboard />} />
+          <Route path="/dashboard" element={
+            <React.Fragment>
+              <Navbar /> {/* Navbar will be displayed only on the Dashboard page */}
+              <Dashboard />
+            </React.Fragment>
+          } />
           <Route
             path="/sign-up"
             element={<SignUp />} />
