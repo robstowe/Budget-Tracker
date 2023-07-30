@@ -177,6 +177,19 @@ import Auth from '../utils/auth';
 
 const defaultTheme = createTheme();
 
+function Copyright(props) {
+  return (
+    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      {'Copyright Â© '}
+      <Link color="inherit" href="https://mui.com/">
+        Your Website
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
+}
+
 const Login = (props) => {
   const [formState, setFormState] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState({ email: '', password: '' });
@@ -329,5 +342,3 @@ const Login = (props) => {
 };
 
 export default Login;
-
-
