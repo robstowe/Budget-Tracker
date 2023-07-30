@@ -1,4 +1,3 @@
-
 import * as React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -100,6 +99,19 @@ export default function MiniDrawer() {
     setOpen(false);
   };
 
+  const buttonData1 = [
+    { text: 'Subscriptions', path: '/Subs' },
+    { text: 'Utilities', path: '/Utilities' },
+    { text: 'Leisure', path: '/Leisure' },
+    { text: 'Drafts', path: '/Drafts' },
+  ];
+
+  const buttonData2 = [
+    { text: 'All mail', path: '/AllMail' },
+    { text: 'Trash', path: '/Trash' },
+    { text: 'Spam', path: '/Spam' },
+  ];
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -130,9 +142,10 @@ export default function MiniDrawer() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+          {buttonData1.map((button, index) => (
+            <ListItem key={button.text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
+                href={button.path} 
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
@@ -148,16 +161,17 @@ export default function MiniDrawer() {
                 >
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                 </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText primary={button.text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
           ))}
         </List>
         <Divider />
         <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+          {buttonData2.map((button, index) => (
+            <ListItem key={button.text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
+                href={button.path} 
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
@@ -173,7 +187,7 @@ export default function MiniDrawer() {
                 >
                   {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                 </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText primary={button.text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
           ))}
@@ -183,3 +197,4 @@ export default function MiniDrawer() {
     </Box>
   );
 }
+
