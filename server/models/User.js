@@ -1,5 +1,9 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
+// const Subscription = require('./Subscription');
+const Utility = require('./Utility');
+const Leisure = require('./Leisure');
+
 
 const userSchema = new Schema({
   email: {
@@ -13,7 +17,12 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
-  
+  subscription: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Subscription',
+  }],
+  leisure: [Leisure.schema],
+  utility: [Utility.schema]
 });
 
 userSchema.pre('save', async function (next) {
