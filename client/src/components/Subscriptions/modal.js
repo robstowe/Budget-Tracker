@@ -3,9 +3,10 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 
-function ModalSub() {
+function ModalSub({ addSubscription }) {
   const [show, setShow] = useState(false);
   const [subscriptionAmount, setSubscriptionAmount] = useState('$');
+  const [subscriptionName, setSubscriptionName] = useState('');
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -16,6 +17,16 @@ function ModalSub() {
     if (/^[0-9$.]*$/.test(enteredValue)) {
       setSubscriptionAmount(enteredValue);
     }
+  };
+
+  const handleSubscriptionNameChange = (event) => {
+    setSubscriptionName(event.target.value);
+  };
+
+  const handleSaveChanges = () => {
+    // Add the new subscription to the list in the parent component (Subs.js)
+    addSubscription({ subscription: subscriptionName, amount: subscriptionAmount });
+    handleClose();
   };
 
   return (
@@ -32,7 +43,13 @@ function ModalSub() {
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
               <Form.Label>Enter Your Subscription</Form.Label>
-              <Form.Control type="text" placeholder="ex. Netflix, Hulu, etc." autoFocus />
+              <Form.Control
+                type="text"
+                placeholder="ex. Netflix, Hulu, etc."
+                autoFocus
+                value={subscriptionName}
+                onChange={handleSubscriptionNameChange}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
               <Form.Label>Enter Subscription Amount</Form.Label>
@@ -50,7 +67,7 @@ function ModalSub() {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="primary" onClick={handleSaveChanges}>
             Save Changes
           </Button>
         </Modal.Footer>
@@ -60,3 +77,7 @@ function ModalSub() {
 }
 
 export default ModalSub;
+
+
+
+
