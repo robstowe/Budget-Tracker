@@ -49,13 +49,30 @@ const resolvers = {
         
         );
          return sub; 
-      }
-      
-      
-      
-      
+      },
+      addLeisure: async (parent, { name, price, category }, context) => {
+                const {_id} = await Category.findOne({name : category});
+                const leisure = await Leisure.create({ name, price, category: _id });
+                
+                await User.findOneAndUpdate(
+                { email: context.user.email },
+                { $addToSet: { leisure: leisure._id } }
+                
+                );
+                 return leisure; 
     },
-  };
+    addUtility: async (parent, { name, price, category }, context) => {
+              const {_id} = await Category.findOne({name : category});
+              const utility = await Utility.create({ name, price, category: _id });
+              
+              await User.findOneAndUpdate(
+              { email: context.user.email },
+              { $addToSet: { utility: utility._id } }
+              
+              );
+               return utility; 
+  },
+}};
   
   module.exports = resolvers;
   
