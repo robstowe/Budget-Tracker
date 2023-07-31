@@ -17,7 +17,8 @@ import ListItemText from '@mui/material/ListItemText';
 import IconButton from '@mui/material/IconButton';
 import Grid from '@mui/material/Grid';
 import DeleteIcon from '@mui/icons-material/Delete';
-
+import ModalLeisure from './modal';
+import LeisureList from './list';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -89,22 +90,21 @@ export default function Subs({ open }) {
             <Card>
               <CardContent>
                 <Grid item xs={12} md={6}>
-                  <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-                    Your Leisures 
-                  </Typography>
+                <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
+              <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+                Your Leisures
+                <LeisureList />
+              </Typography>
+              <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+                Your Expenses
+                <LeisureList />
+              </Typography>
+            </Box>
+
                   <Demo>
                     <List dense={dense}>
                  
-                        <ListItem
-                          secondaryAction={
-                            <IconButton edge="end" aria-label="delete">
-                              <DeleteIcon />
-                            </IconButton>
-                          }>
-                          <ListItemText
-                            primary="Single-line item"
-                            secondary={secondary ? 'Secondary text' : null}/>
-                        </ListItem>
+                       
      
                     </List>
                   </Demo>
@@ -112,9 +112,7 @@ export default function Subs({ open }) {
               </CardContent>
 
               <CardActions sx={{ justifyContent: 'center'}}>
-                <Button variant="contained" color="primary">
-                  Add Expense
-                </Button>
+                <ModalLeisure />
               </CardActions>
             </Card>
           </Box>
