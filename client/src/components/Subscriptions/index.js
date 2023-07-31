@@ -20,7 +20,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import ModalSub from './modal';
 import SubList from './list';
 
-
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -33,7 +32,7 @@ const Demo = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
 }));
 
-export default function Subs({ open }) {
+const Subs = ({ open }) => {
   const [dense, setDense] = useState(false);
   const [secondary, setSecondary] = useState(false);
   const [subscriptions, setSubscriptions] = useState([]);
@@ -41,8 +40,6 @@ export default function Subs({ open }) {
   const addSubscription = (newSubscription) => {
     setSubscriptions((prevSubscriptions) => [...prevSubscriptions, newSubscription]);
   };
-
-
 
   return (
     <React.Fragment>
@@ -56,10 +53,8 @@ export default function Subs({ open }) {
           alignItems: 'center',
           justifyContent: 'center',
           flexDirection: 'column',
-        }}>
-
-
-
+        }}
+      >
         <Box
           display="grid"
           gridTemplateColumns="repeat(3, 1fr)"
@@ -67,16 +62,11 @@ export default function Subs({ open }) {
           sx={{
             maxWidth: '1200px',
             width: '100%',
-          }}>
-
-
+          }}
+        >
           <Box gridColumn="span 3">
             <Card>
-              <CardMedia
-                
-                image="/static/images/cards/contemplative-reptile.jpg"
-                title="green iguana"
-              />
+              <CardMedia image="/static/images/cards/contemplative-reptile.jpg" title="green iguana" />
               <CardContent sx={{ mt: 2, mb: 2 }}>
                 <Typography gutterBottom variant="h5" component="div">
                   Welcome to Your Subscriptions!
@@ -85,57 +75,42 @@ export default function Subs({ open }) {
                   Below, you will find a list of all subscriptions and their corresponding costs that you pay for on a monthly basis. Click the "Add Sub" button to add additional subscriptions or click the trashcan icon to remove a subscription.
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  The bar graph below will chart out your most expensive subcriptions
+                  The bar graph below will chart out your most expensive subscriptions
                 </Typography>
               </CardContent>
             </Card>
           </Box>
 
-
-
-
-          <Box gridColumn="span 3" sx={{  justifyContent: 'center' }}>
+          <Box gridColumn="span 3" sx={{ justifyContent: 'center' }}>
             <Card>
               <CardContent>
-                <Grid item xs={12} md={6}>
-                <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
-              <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-                Your Subscriptions
-                <SubList />
-              </Typography>
-              <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-                Your Expenses
-                <SubList />
-              </Typography>
+                <Grid item xs={12} md={6} />
+                  <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
+                    <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+                      Your Subscriptions
+                      <SubList subscriptions={subscriptions} />
+                    </Typography>
+                  </Box>
+                </CardContent>
+                <CardActions sx={{ justifyContent: 'center' }}>
+                  <ModalSub addSubscription={addSubscription} />
+                </CardActions>
+              </Card>
             </Box>
 
-                  <Demo>
-                    <List dense={dense}>
-                 
-                       
-     
-                    </List>
-                  </Demo>
-                </Grid>
-              </CardContent>
-
-              <CardActions sx={{ justifyContent: 'center'}}>
-                <ModalSub />
-              </CardActions>
-            </Card>
-          </Box>
-
-
-
-
-          <Box gridColumn="span 3" sx={{ width: "100%", maxWidth: '1200px', display: 'flex', justifyContent: 'center' }}>
-            <Card>
+            <Box gridColumn="span 3" sx={{ width: "100%", maxWidth: '1200px', display: 'flex', justifyContent: 'center' }}>
+              <Card>
                 <SubBars />
-            </Card>
+              </Card>
+            </Box>
           </Box>
-        </Box>
-      </Container>
-    </React.Fragment>
-  );
-}
+        </Container>
+      </React.Fragment>
+    );
+  };
+
+export default Subs;
+
+
+
 
