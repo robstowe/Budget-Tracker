@@ -20,6 +20,13 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
+const CenteredFlexBox = styled(Box)({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  height: '100%',
+});
+
 export default function Subs({ open }) {
   return (
     <React.Fragment>
@@ -83,7 +90,9 @@ export default function Subs({ open }) {
 
           <Box gridColumn="span 3" sx={{ width: "100%", maxWidth: '1200px', display: 'flex', justifyContent: 'center' }}>
             <Card>
-              <SubBars />
+            <CenteredFlexBox>
+                <SubBars />
+              </CenteredFlexBox>
             </Card>
           </Box>
         </Box>
