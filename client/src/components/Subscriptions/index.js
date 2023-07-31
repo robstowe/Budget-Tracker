@@ -34,8 +34,14 @@ const Demo = styled('div')(({ theme }) => ({
 }));
 
 export default function Subs({ open }) {
-  const [dense, setDense] = React.useState(false);
-  const [secondary, setSecondary] = React.useState(false);
+  const [dense, setDense] = useState(false);
+  const [secondary, setSecondary] = useState(false);
+  const [subscriptions, setSubscriptions] = useState([]);
+
+  const addSubscription = (newSubscription) => {
+    setSubscriptions((prevSubscriptions) => [...prevSubscriptions, newSubscription]);
+  };
+
 
 
   return (
@@ -132,3 +138,4 @@ export default function Subs({ open }) {
     </React.Fragment>
   );
 }
+
