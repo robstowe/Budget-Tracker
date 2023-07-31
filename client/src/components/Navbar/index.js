@@ -193,7 +193,7 @@ export default function MiniDrawer() {
           ))}
         </List>
       </Drawer>
-      <Dashboard open={open} />
+      {/* <Dashboard open={open} /> */}
     </Box>
   );
 }
