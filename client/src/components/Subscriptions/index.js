@@ -17,6 +17,7 @@ import ListItemText from '@mui/material/ListItemText';
 import IconButton from '@mui/material/IconButton';
 import Grid from '@mui/material/Grid';
 import DeleteIcon from '@mui/icons-material/Delete';
+import ModalSub from './modal';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -34,6 +35,7 @@ const Demo = styled('div')(({ theme }) => ({
 export default function Subs({ open }) {
   const [dense, setDense] = React.useState(false);
   const [secondary, setSecondary] = React.useState(false);
+
 
   return (
     <React.Fragment>
@@ -112,10 +114,12 @@ export default function Subs({ open }) {
               </CardContent>
 
               <CardActions sx={{ justifyContent: 'center'}}>
-                <Button variant="contained" color="primary">
+                {/* <Button variant="contained" color="primary">
                   Add Sub
-                </Button>
+                </Button> */}
+                <ModalSub  />
               </CardActions>
+              
             </Card>
           </Box>
 
