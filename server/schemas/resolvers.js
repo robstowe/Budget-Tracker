@@ -10,6 +10,9 @@ const resolvers = {
       user: async (parent, { email }) => {
         return User.findOne({ email }).populate('thoughts');
       },  
+      allCategories: async() => {
+        return Category.find();
+      }
     },
   
     Mutation: {
@@ -36,14 +39,16 @@ const resolvers = {
         return { token, user };
       }, 
       addSub: async (parent, { name, price, category }, context) => {
-        const sub = await Subscription.create({ name, price, category });
+// console.log(context.user.email);
+        const {_id} = await Category.findOne({name : category});
+        const sub = await Subscription.create({ name, price, category: _id });
         
         await User.findOneAndUpdate(
-        { email: name },
+        { email: context.user.email },
         { $addToSet: { subscription: sub._id } }
         
         );
-        return sub; 
+         return sub; 
       }
       
       

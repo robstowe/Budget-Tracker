@@ -7,6 +7,11 @@ const typeDefs = gql`
     password: String
   }
 
+  type Category{
+    _id:ID
+    name:String!
+  }
+
   type Auth {
     token: ID!
     user: User
@@ -16,6 +21,7 @@ const typeDefs = gql`
     users: [User]
     user(email: String!): User
     me: User
+    allCategories: [Category]
     subscriptions(email: String): [Subscription]
     subscription(subId: ID!): Subscription
   }
@@ -31,7 +37,7 @@ const typeDefs = gql`
     addUser(email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addSub(
-      subId: ID!
+      category: String!
       price: Int!
       name: String!
     ): Subscription
