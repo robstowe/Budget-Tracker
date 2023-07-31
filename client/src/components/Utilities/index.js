@@ -17,6 +17,8 @@ import ListItemText from '@mui/material/ListItemText';
 import IconButton from '@mui/material/IconButton';
 import Grid from '@mui/material/Grid';
 import DeleteIcon from '@mui/icons-material/Delete';
+import ModalUtil from './modal';
+import UtilList from './list';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -89,22 +91,21 @@ export default function Subs({ open }) {
             <Card>
               <CardContent>
                 <Grid item xs={12} md={6}>
-                  <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-                    Your Utilities
-                  </Typography>
+                <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
+              <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+                Your Utilities
+                <UtilList />
+              </Typography>
+              <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+                Your Expenses
+                <UtilList />
+              </Typography>
+            </Box>
+
                   <Demo>
                     <List dense={dense}>
                  
-                        <ListItem
-                          secondaryAction={
-                            <IconButton edge="end" aria-label="delete">
-                              <DeleteIcon />
-                            </IconButton>
-                          }>
-                          <ListItemText
-                            primary="Single-line item"
-                            secondary={secondary ? 'Secondary text' : null}/>
-                        </ListItem>
+                   
      
                     </List>
                   </Demo>
@@ -112,12 +113,11 @@ export default function Subs({ open }) {
               </CardContent>
 
               <CardActions sx={{ justifyContent: 'center'}}>
-                <Button variant="contained" color="primary">
-                  Add Utility
-                </Button>
+                <ModalUtil />
               </CardActions>
             </Card>
           </Box>
+
 
 
 
