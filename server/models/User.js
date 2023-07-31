@@ -20,7 +20,6 @@ const userSchema = new Schema({
   subscription: [Subscription.schema],
   leisure: [Leisure.schema],
   utility: [Utility.schema]
-  
 });
 
 userSchema.pre('save', async function (next) {

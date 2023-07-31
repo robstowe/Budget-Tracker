@@ -1,5 +1,4 @@
 const { Schema, model } = require('mongoose');
-const User = require('./User');
 
 
 const subSchema = new Schema({
@@ -21,6 +20,6 @@ const subSchema = new Schema({
     
   });
   
-  const Subscription = mongoose.model('Product', subSchema);
+  const Subscription = model('Subscription', subSchema);
   
   module.exports = Subscription;

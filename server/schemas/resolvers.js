@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const User = require('../models/User');
+const { User, Subscription, Category, Utility, Leisure } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -34,7 +34,17 @@ const resolvers = {
         const token = signToken(user);
   
         return { token, user };
-      },
+      }, 
+      addSub: async (parent, { name, price, category }, context) => {
+        const sub = await Subscription.create({ name, price, category });
+        
+        await User.findOneAndUpdate(
+        { email: name },
+        { $addToSet: { subscription: sub._id } }
+        
+        );
+        return sub; 
+      }
       
       
       
