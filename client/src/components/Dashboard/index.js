@@ -14,6 +14,7 @@ import SubBars from '../Subscriptions/chart';
 import UtilBars from '../Utilities/chart';
 import LeisureBars from '../Leisure/chart';
 
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -27,7 +28,7 @@ export default function Dashboard({ open }) {
 
     <React.Fragment>
       <CssBaseline />
-      <Container maxWidth="xxl" sx={{ bgcolor: '#cfe8fc', height: 'auto', display: 'flex',  flexDirection: 'column'}}>
+      <Container maxWidth="xl" sx={{ bgcolor: '#cfe8fc', height: 'auto', display: 'flex',  flexDirection: 'column'}}>
         <Box
           sx={{
             width: open ? 'calc(100% - 240px)' : '100%',

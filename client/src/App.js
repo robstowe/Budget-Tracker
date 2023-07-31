@@ -16,6 +16,7 @@ import Utilities from './components/Utilities'
 
 
 import 'bootstrap/dist/css/bootstrap.min.css'
+import Dashboard from './components/Dashboard';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -52,6 +53,7 @@ export default function App() {
           <Route path="/dashboard" element={
             <React.Fragment>
               <Navbar /> {/* Navbar will be displayed only on the Dashboard page */}
+              <Dashboard />
             </React.Fragment>
 
           } />
