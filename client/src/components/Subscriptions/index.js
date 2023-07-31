@@ -124,7 +124,7 @@ export default function Subs({ open }) {
 
           <Box gridColumn="span 3" sx={{ width: "100%", maxWidth: '1200px', display: 'flex', justifyContent: 'center' }}>
             <Card>
-              <SubBars />
+                <SubBars />
             </Card>
           </Box>
         </Box>
