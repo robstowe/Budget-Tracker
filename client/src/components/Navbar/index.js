@@ -106,10 +106,10 @@ export default function MiniDrawer() {
   }
 
   const buttonData1 = [
+    { text: 'Dashboard', path: '/Dashboard' },
     { text: 'Subscriptions', path: '/Subs' },
     { text: 'Utilities', path: '/Utilities' },
     { text: 'Leisure', path: '/Leisure' },
-    { text: 'Drafts', path: '/Drafts' },
   ];
 
   const buttonData2 = [

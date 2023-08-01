@@ -28,16 +28,24 @@ export default function Dashboard({ open }) {
 
     <React.Fragment>
       <CssBaseline />
-      <Container maxWidth="xl" sx={{ bgcolor: '#cfe8fc', height: 'auto', display: 'flex',  flexDirection: 'column'}}>
-        <Box
+      <Container maxWidth="xxl"
+        sx={{
+          bgcolor: '#cfe8fc',
+          minHeight: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexDirection: 'column',
+        }}>
+         <Box
+          display="grid"
+          gridTemplateColumns="repeat(3, 1fr)"
+          gap={2}
           sx={{
-            width: open ? 'calc(100% - 240px)' : '100%',
-            transition: 'width 0.3s ease',
-            marginTop: '100px',
-            flex: '1 1 auto'
-
-          }}
-        >
+            maxWidth: '1200px',
+            width: '100%',
+          }}>
+            
           <Box display="grid" gridTemplateColumns="repeat(3, 1fr)" gap={2}>
             <Box gridColumn="span 3">
               <Card sx={{ maxWidth: 10000 }}>
