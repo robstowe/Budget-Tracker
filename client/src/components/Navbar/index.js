@@ -18,7 +18,9 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-import Dashboard from '../Dashboard'; 
+import Dashboard from '../Dashboard';
+import AuthService from '../../utils/auth';
+import LogoutIcon from '@mui/icons-material/Logout';
 
 const drawerWidth = 240;
 
@@ -99,6 +101,10 @@ export default function MiniDrawer() {
     setOpen(false);
   };
 
+  const handleLogout = () => {
+    AuthService.logout();
+  }
+
   const buttonData1 = [
     { text: 'Subscriptions', path: '/Subs' },
     { text: 'Utilities', path: '/Utilities' },
@@ -132,6 +138,18 @@ export default function MiniDrawer() {
           <Typography variant="h6" noWrap component="div">
             Mini variant drawer
           </Typography>
+
+            <IconButton
+            color="inherit"
+            aria-label="logout"
+            onClick={handleLogout}
+            sx={{ marginLeft: 'auto' }}
+            >
+              <LogoutIcon />
+            </IconButton>
+
+
+
         </Toolbar>
       </AppBar>
       <Drawer variant="permanent" open={open}>
