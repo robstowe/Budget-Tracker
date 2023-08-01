@@ -14,6 +14,7 @@ import SubBars from '../Subscriptions/chart';
 import List from '@mui/material/List';
 import ModalSub from './modal';
 import SubList from './list';
+import Navbar from '../Navbar/index'
 
 
 
@@ -64,6 +65,7 @@ const Subs = ({ open }) => {
   return (
     <React.Fragment>
       <CssBaseline />
+      <Navbar />
       <Container
         maxWidth="xxl"
         sx={{
