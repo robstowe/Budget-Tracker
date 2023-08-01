@@ -46,24 +46,18 @@ const resolvers = {
          return sub; 
       },
       addLeisure: async (parent, { name, price}, context) => {
-                
                 const leisure = await Leisure.create({ name, price });
-                
                 await User.findOneAndUpdate(
                 { email: context.user.email },
                 { $addToSet: { leisure: leisure._id } }
-                
                 );
                  return leisure; 
     },
     addUtility: async (parent, { name, price}, context) => {
-              
               const utility = await Utility.create({ name, price });
-              
               await User.findOneAndUpdate(
               { email: context.user.email },
-              { $addToSet: { utility: utility._id } }
-              
+              { $addToSet: { utility: utility._id } } 
               );
                return utility; 
   },

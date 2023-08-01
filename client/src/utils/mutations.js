@@ -36,7 +36,7 @@ mutation addSub($price: Int!, $name: String!) {
 export const ADD_LEISURE = gql`
 mutation addLeisure($price: Int!, $name: String!) {
   addLeisure(price: $price, name: $name) {
-
+    _id
     name
     price
   }
@@ -46,7 +46,7 @@ mutation addLeisure($price: Int!, $name: String!) {
 export const ADD_UTILITY = gql`
 mutation addUtility($price: Int!, $name: String!) {
   addUtility(price: $price, name: $name) {
-
+    _id
     name
     price
   }

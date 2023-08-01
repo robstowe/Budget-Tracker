@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -10,13 +10,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import SubBars from '../Subscriptions/chart';
+import UtilBars from '../Utilities/chart';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import IconButton from '@mui/material/IconButton';
-import Grid from '@mui/material/Grid';
-import DeleteIcon from '@mui/icons-material/Delete';
 import ModalUtil from './modal';
 import UtilList from './list';
 
@@ -33,9 +28,37 @@ const Demo = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
 }));
 
-export default function Subs({ open }) {
+export default function Utils({ open }) {
   const [dense, setDense] = React.useState(false);
   const [secondary, setSecondary] = React.useState(false);
+  const [utilities, setUtilities] = useState([]);
+
+    // Load util from local storage when the component mounts
+    useEffect(() => {
+      const savedUtilities = JSON.parse(localStorage.getItem('utilities')) || [];
+      setUtilities(savedUtilities);
+    }, []);
+  
+    // Function to save util to local storage when it updates
+    useEffect(() => {
+      localStorage.setItem('utilities', JSON.stringify(utilities));
+    }, [utilities]);
+  
+    const addUtility = (newUtility) => {
+      setUtilities((prevUtilities) => [...prevUtilities, newUtility]);
+    };
+  
+    const deleteUtility = (index) => {
+      const updatedUtilities = [...utilities];
+      updatedUtilities.splice(index, 1);
+      setUtilities(updatedUtilities);
+    };
+  
+    const editUtility = (index, editedUtility) => {
+      const updatedUtilities = [...utilities];
+      updatedUtilities[index] = editedUtility;
+      setUtilities(updatedUtilities);
+    };
 
   return (
     <React.Fragment>
@@ -49,10 +72,8 @@ export default function Subs({ open }) {
           alignItems: 'center',
           justifyContent: 'center',
           flexDirection: 'column',
-        }}>
-
-
-
+        }}
+      >
         <Box
           display="grid"
           gridTemplateColumns="repeat(3, 1fr)"
@@ -60,75 +81,49 @@ export default function Subs({ open }) {
           sx={{
             maxWidth: '1200px',
             width: '100%',
-          }}>
-
-
+          }}
+        >
           <Box gridColumn="span 3">
             <Card>
-              <CardMedia
-                
-                image="/static/images/cards/contemplative-reptile.jpg"
-                title="green iguana"
-              />
+              <CardMedia image="/static/images/cards/contemplative-reptile.jpg" title="green iguana" />
               <CardContent sx={{ mt: 2, mb: 2 }}>
                 <Typography gutterBottom variant="h5" component="div">
-                  Welcome to Your Utilities page!
+                  Welcome to Your Utilities!
                 </Typography>
                 <Typography sx={{ mt: 2, mb: 2 }} variant="body2" color="text.secondary">
                   Below, you will find a list of all utilities and their corresponding costs that you pay for on a monthly basis. Click the "Add Utility" button to add additional utilities or click the trashcan icon to remove a utility.
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  The bar graph below will chart out your most expensive utilities.
+                  The bar graph below will chart out your most expensive utilities
                 </Typography>
               </CardContent>
             </Card>
           </Box>
 
-
-
-
-          <Box gridColumn="span 3" sx={{  justifyContent: 'center' }}>
+          <Box gridColumn="span 3" sx={{ justifyContent: 'center' }}>
             <Card>
               <CardContent>
-                <Grid item xs={12} md={6}>
                 <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
-              <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-                Your Utilities
-                <UtilList />
-              </Typography>
-              <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-                Your Expenses
-                <UtilList />
-              </Typography>
-            </Box>
-
-                  <Demo>
-                    <List dense={dense}>
-                 
-                   
-     
-                    </List>
-                  </Demo>
-                </Grid>
+                  <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+                    Your Utilities
+                    <UtilList utilities={utilities} onDeleteUtility={deleteUtility} onEditUtility={editUtility} />
+                  </Typography>
+                </Box>
               </CardContent>
 
-              <CardActions sx={{ justifyContent: 'center'}}>
-                <ModalUtil />
+              <CardActions sx={{ justifyContent: 'center' }}>
+                <ModalUtil addUtility={addUtility} />
               </CardActions>
             </Card>
           </Box>
 
-
-
-
-
           <Box gridColumn="span 3" sx={{ width: "100%", maxWidth: '1200px', display: 'flex', justifyContent: 'center' }}>
             <Card>
-                <SubBars />
+              <UtilBars />
             </Card>
           </Box>
         </Box>
       </Container>
     </React.Fragment>
   );
-}
+};
