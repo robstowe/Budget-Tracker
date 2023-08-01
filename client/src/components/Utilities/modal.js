@@ -2,25 +2,47 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
+import { ADD_UTILITY } from '../../utils/mutations';
+import { useMutation } from '@apollo/client';
 
-function ModalUtil() {
+function ModalUtil({ addUtility }) {
   const [show, setShow] = useState(false);
-  const [subscriptionAmount, setSubscriptionAmount] = useState('$');
+  const [utilityAmount, setUtilityAmount] = useState(0);
+  const [utilityName, setUtilityName] = useState('');
+  const [addUtil, { error }] = useMutation(ADD_UTILITY);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const handleAmountChange = (event) => {
-    const enteredValue = event.target.value;
+    const enteredValue = +event.target.value;
     // Use a regular expression to check if the entered value matches the allowed pattern.
-    if (/^[0-9$.]*$/.test(enteredValue)) {
-      setSubscriptionAmount(enteredValue);
-    }
+    // if (/^[0-9$.]*$/.test(enteredValue)) {
+      setUtilityAmount(enteredValue);
+    // }
+  };
+
+  const handleUtilityNameChange = (event) => {
+    setUtilityName(event.target.value);
+  };
+
+  const handleSaveChanges = async () => {
+    console.log('hello');
+    const {data} = await addUtil({
+      variables:{
+        price: utilityAmount, 
+        name: utilityName,
+      }
+      
+    }); console.log(data);
+    // Add the new subscription to the list in the parent component (Subs.js)
+    addUtility({ utility: data.addUtil.name, amount: data.addUtil.price });
+    handleClose();
   };
 
   return (
     <>
-      <Button variant="primary" onClick={handleShow}>
+<Button variant="primary" onClick={handleShow}>
         Add Utility
       </Button>
 
@@ -31,8 +53,14 @@ function ModalUtil() {
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Enter Your Utility</Form.Label>
-              <Form.Control type="text" placeholder="ex. Water, Electric etc." autoFocus />
+              <Form.Label>Enter Your Utilities</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="ex. Netflix, Hulu, etc."
+                autoFocus
+                value={utilityName}
+                onChange={handleUtilityNameChange}
+              />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
               <Form.Label>Enter Utility Amount</Form.Label>
@@ -40,19 +68,20 @@ function ModalUtil() {
                 as="textarea"
                 rows={3}
                 type="text"
-                value={subscriptionAmount}
+                value={utilityAmount}
                 onChange={handleAmountChange}
               />
             </Form.Group>
+            <Button variant="primary" onClick={handleSaveChanges}>
+            Save Changes
+          </Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
+          
         </Modal.Footer>
       </Modal>
     </>

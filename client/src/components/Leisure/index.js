@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -10,13 +10,8 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import SubBars from '../Subscriptions/chart';
+import LeisureBars from '../Leisure/chart';
 import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
-import IconButton from '@mui/material/IconButton';
-import Grid from '@mui/material/Grid';
-import DeleteIcon from '@mui/icons-material/Delete';
 import ModalLeisure from './modal';
 import LeisureList from './list';
 import Navbar from '../Navbar/index';
@@ -36,99 +31,101 @@ const Demo = styled('div')(({ theme }) => ({
 export default function Subs({ open }) {
   const [dense, setDense] = React.useState(false);
   const [secondary, setSecondary] = React.useState(false);
+  const [leisures, setLeisures] = useState([]);
+
+  // Load util from local storage when the component mounts
+  useEffect(() => {
+    const savedLeisures = JSON.parse(localStorage.getItem('leisures')) || [];
+    setLeisures(savedLeisures);
+  }, []);
+
+  // Function to save util to local storage when it updates
+  useEffect(() => {
+    localStorage.setItem('leisures', JSON.stringify(leisures));
+  }, [leisures]);
+
+  const addLubby = (newLeisure) => {
+    setLeisures((prevLeisures) => [...prevLeisures, newLeisure]);
+  };
+
+  const deleteLeisure = (index) => {
+    const updatedLeisures = [...leisures];
+    updatedLeisures.splice(index, 1);
+    setLeisures(updatedLeisures);
+  };
+
+  const editLeisure = (index, editedLeisure) => {
+    const updatedLeisures = [...leisures];
+    updatedLeisures[index] = editedLeisure;
+    setLeisures(updatedLeisures);
+  };
+
 
   return (
     <React.Fragment>
-      <CssBaseline />
-      <Navbar />
-      <Container
-        maxWidth="xxl"
+    <CssBaseline />
+    <Navbar />
+    <Container
+      maxWidth="xxl"
+      sx={{
+        bgcolor: '#cfe8fc',
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+      }}
+    >
+      <Box
+        display="grid"
+        gridTemplateColumns="repeat(3, 1fr)"
+        gap={2}
         sx={{
-          bgcolor: '#cfe8fc',
-          minHeight: '100vh',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexDirection: 'column',
-        }}>
-
-
-
-        <Box
-          display="grid"
-          gridTemplateColumns="repeat(3, 1fr)"
-          gap={2}
-          sx={{
-            maxWidth: '1200px',
-            width: '100%',
-          }}>
-
-
-          <Box gridColumn="span 3">
-            <Card>
-              <CardMedia
-                
-                image="/static/images/cards/contemplative-reptile.jpg"
-                title="green iguana"
-              />
-              <CardContent sx={{ mt: 2, mb: 2 }}>
-                <Typography gutterBottom variant="h5" component="div">
-                  Welcome to Your Leisure expenses!
-                </Typography>
-                <Typography sx={{ mt: 2, mb: 2 }} variant="body2" color="text.secondary">
-                  Below, you will find a list of all your leisure expenses and their corresponding costs that you pay for on a monthly basis. Click the "Add expense" button to add additional expenses or click the trashcan icon to remove an expense.
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  The bar graph below will chart out your most expensive leisures.
-                </Typography>
-              </CardContent>
-            </Card>
-          </Box>
-
-
-
-
-          <Box gridColumn="span 3" sx={{  justifyContent: 'center' }}>
-            <Card>
-              <CardContent>
-                <Grid item xs={12} md={6}>
-                <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
-              <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-                Your Leisures
-                <LeisureList />
+          maxWidth: '1200px',
+          width: '100%',
+        }}
+      >
+        <Box gridColumn="span 3">
+          <Card>
+            <CardMedia image="/static/images/cards/contemplative-reptile.jpg" title="green iguana" />
+            <CardContent sx={{ mt: 2, mb: 2 }}>
+              <Typography gutterBottom variant="h5" component="div">
+                Welcome to Your Leisures!
               </Typography>
-              <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-                Your Expenses
-                <LeisureList />
+              <Typography sx={{ mt: 2, mb: 2 }} variant="body2" color="text.secondary">
+                Below, you will find a list of all leisures and their corresponding costs that you pay for on a monthly basis. Click the "Add Leisures" button to add additional leisures or click the trashcan icon to remove a leisure.
               </Typography>
-            </Box>
-
-                  <Demo>
-                    <List dense={dense}>
-                 
-                       
-     
-                    </List>
-                  </Demo>
-                </Grid>
-              </CardContent>
-
-              <CardActions sx={{ justifyContent: 'center'}}>
-                <ModalLeisure />
-              </CardActions>
-            </Card>
-          </Box>
-
-
-
-
-          <Box gridColumn="span 3" sx={{ width: "100%", maxWidth: '1200px', display: 'flex', justifyContent: 'center' }}>
-            <Card>
-                <SubBars />
-            </Card>
-          </Box>
+              <Typography variant="body2" color="text.secondary">
+                The bar graph below will chart out your most expensive gfafsafas
+              </Typography>
+            </CardContent>
+          </Card>
         </Box>
-      </Container>
-    </React.Fragment>
-  );
-}
+
+        <Box gridColumn="span 3" sx={{ justifyContent: 'center' }}>
+          <Card>
+            <CardContent>
+              <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
+                <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+                  Your Leisures
+                  <LeisureList leisures={leisures} onDeleteLeisure={deleteLeisure} onEditLeisure={editLeisure} />
+                </Typography>
+              </Box>
+            </CardContent>
+
+            <CardActions sx={{ justifyContent: 'center' }}>
+              <ModalLeisure addLubby={addLubby} />
+            </CardActions>
+          </Card>
+        </Box>
+
+        <Box gridColumn="span 3" sx={{ width: "100%", maxWidth: '1200px', display: 'flex', justifyContent: 'center' }}>
+          <Card>
+            <LeisureBars />
+          </Card>
+        </Box>
+      </Box>
+    </Container>
+  </React.Fragment>
+);
+};
