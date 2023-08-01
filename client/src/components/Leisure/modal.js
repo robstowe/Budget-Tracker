@@ -5,7 +5,7 @@ import Modal from 'react-bootstrap/Modal';
 import { ADD_LEISURE } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
 
-function ModalLeisure({ addL }) {
+function ModalLeisure({ addLubby }) {
   const [show, setShow] = useState(false);
   const [leisureAmount, setLeisureAmount] = useState(0);
   const [leisureName, setLeisureName] = useState('');
@@ -36,7 +36,7 @@ function ModalLeisure({ addL }) {
       
     }); console.log(data);
     // Add the new subscription to the list in the parent component (Subs.js)
-    addL({ leisure: data.addLeisure.name, amount: data.addLeisure.price });
+    addLubby({ leisure: data.addLeisure.name, amount: data.addLeisure.price });
     handleClose();
   };
 
