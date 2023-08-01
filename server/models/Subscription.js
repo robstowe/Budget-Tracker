@@ -12,11 +12,7 @@ const subSchema = new Schema({
       required: true,
       min: 0.99
     },
-    category: {
-      type: Schema.Types.ObjectId,
-      ref: 'Category',
-      required: false,
-    },
+
     
   });
   

@@ -24,10 +24,9 @@ export const ADD_USER = gql`
 `;
 //go to graphql and grab those mutations from there to create these
 export const ADD_SUB = gql`
-mutation addSub($price: Int!, $name: String!, $category: String) {
-  addSub(price: $price, name: $name, category: $category) {
+mutation addSub($price: Int!, $name: String!) {
+  addSub(price: $price, name: $name) {
     _id
-    category
     name
     price
   }
@@ -37,8 +36,7 @@ mutation addSub($price: Int!, $name: String!, $category: String) {
 export const ADD_LEISURE = gql`
 mutation addLeisure($price: Int!, $name: String!) {
   addLeisure(price: $price, name: $name) {
-    _id
-    category
+
     name
     price
   }
@@ -48,8 +46,7 @@ mutation addLeisure($price: Int!, $name: String!) {
 export const ADD_UTILITY = gql`
 mutation addUtility($price: Int!, $name: String!) {
   addUtility(price: $price, name: $name) {
-    _id
-    category
+
     name
     price
   }

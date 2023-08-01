@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Subscription, Category, Utility, Leisure } = require('../models');
+const { User, Subscription, Utility, Leisure } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -10,9 +10,6 @@ const resolvers = {
       user: async (parent, { email }) => {
         return User.findOne({ email }).populate('subscription').populate('leisure').populate('utility');
       },  
-      allCategories: async() => {
-        return Category.find();
-      }
     },
   
     Mutation: {
@@ -38,11 +35,9 @@ const resolvers = {
   
         return { token, user };
       }, 
-      addSub: async (parent, { name, price, category }, context) => {
-// console.log(context.user.email);
-        const {_id} = await Category.findOne({name : category});
-        const sub = await Subscription.create({ name, price, category: _id });
-        
+      addSub: async (parent, { name, price }, context) => {        
+        const sub = await Subscription.create({ name, price});
+        console.log(sub, context.user);
         await User.findOneAndUpdate(
         { email: context.user.email },
         { $addToSet: { subscription: sub._id } }
@@ -50,9 +45,9 @@ const resolvers = {
         );
          return sub; 
       },
-      addLeisure: async (parent, { name, price, category }, context) => {
-                const {_id} = await Category.findOne({name : category});
-                const leisure = await Leisure.create({ name, price, category: _id });
+      addLeisure: async (parent, { name, price}, context) => {
+                
+                const leisure = await Leisure.create({ name, price });
                 
                 await User.findOneAndUpdate(
                 { email: context.user.email },
@@ -61,9 +56,9 @@ const resolvers = {
                 );
                  return leisure; 
     },
-    addUtility: async (parent, { name, price, category }, context) => {
-              const {_id} = await Category.findOne({name : category});
-              const utility = await Utility.create({ name, price, category: _id });
+    addUtility: async (parent, { name, price}, context) => {
+              
+              const utility = await Utility.create({ name, price });
               
               await User.findOneAndUpdate(
               { email: context.user.email },
