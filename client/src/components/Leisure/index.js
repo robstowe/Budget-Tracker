@@ -19,6 +19,7 @@ import Grid from '@mui/material/Grid';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ModalLeisure from './modal';
 import LeisureList from './list';
+import Navbar from '../Navbar/index';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -39,6 +40,7 @@ export default function Subs({ open }) {
   return (
     <React.Fragment>
       <CssBaseline />
+      <Navbar />
       <Container
         maxWidth="xxl"
         sx={{

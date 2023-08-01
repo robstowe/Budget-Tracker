@@ -28,16 +28,26 @@ export default function Dashboard({ open }) {
 
     <React.Fragment>
       <CssBaseline />
-      <Container maxWidth="xl" sx={{ bgcolor: '#cfe8fc', height: 'auto', display: 'flex',  flexDirection: 'column'}}>
-        <Box
+      <Container maxWidth="xxl"
+        sx={{
+          bgcolor: '#cfe8fc',
+          minHeight: '100vh',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          flexDirection: 'column',
+        }}>
+         <Box
+          display="grid"
+          gridTemplateColumns="repeat(3, 1fr)"
+          gap={2}
           sx={{
-            width: open ? 'calc(100% - 240px)' : '100%',
-            transition: 'width 0.3s ease',
-            marginTop: '100px',
-            flex: '1 1 auto'
-
-          }}
-        >
+            maxWidth: '1200px',
+            width: '100%',
+            mt: 10, 
+            mb: 2 
+          }}>
+            
           <Box display="grid" gridTemplateColumns="repeat(3, 1fr)" gap={2}>
             <Box gridColumn="span 3">
               <Card sx={{ maxWidth: 10000 }}>
@@ -46,11 +56,11 @@ export default function Dashboard({ open }) {
                   image="/static/images/cards/contemplative-reptile.jpg"
                   title="green iguana"
                 />
-                <CardContent>
-                  <Typography gutterBottom variant="h5" component="div">
+                <CardContent sx={{ mt: 2, mb: 2 }}>
+                  <Typography  gutterBottom variant="h5" component="div">
                     Lizard
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography sx={{ mt: 2, mb: 2 }} variant="body2" color="text.secondary">
                     Lizards are a widespread group of squamate reptiles, with over 6,000
                     species, ranging across all continents except Antarctica
                   </Typography>
@@ -83,11 +93,11 @@ export default function Dashboard({ open }) {
                   image="/static/images/cards/contemplative-reptile.jpg"
                   title="green iguana"
                 />
-                <CardContent>
+                <CardContent sx={{ mt: 2, mb: 2 }}>
                   <Typography gutterBottom variant="h5" component="div">
                     Lizard
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography sx={{ mt: 2, mb: 2 }} variant="body2" color="text.secondary">
                     Lizards are a widespread group of squamate reptiles, with over 6,000
                     species, ranging across all continents except Antarctica
                   </Typography>
@@ -105,11 +115,11 @@ export default function Dashboard({ open }) {
                   image="/static/images/cards/contemplative-reptile.jpg"
                   title="green iguana"
                 />
-                <CardContent>
+                <CardContent sx={{ mt: 2, mb: 2 }}>
                   <Typography gutterBottom variant="h5" component="div">
                     Lizard
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography sx={{ mt: 2, mb: 2 }} variant="body2" color="text.secondary">
                     Lizards are a widespread group of squamate reptiles, with over 6,000
                     species, ranging across all continents except Antarctica
                   </Typography>
@@ -127,11 +137,11 @@ export default function Dashboard({ open }) {
                   image="/static/images/cards/contemplative-reptile.jpg"
                   title="green iguana"
                 />
-                <CardContent>
+                <CardContent sx={{ mt: 2, mb: 2 }}>
                   <Typography gutterBottom variant="h5" component="div">
                     Lizard
                   </Typography>
-                  <Typography variant="body2" color="text.secondary">
+                  <Typography sx={{ mt: 2, mb: 2 }}  variant="body2" color="text.secondary">
                     Lizards are a widespread group of squamate reptiles, with over 6,000
                     species, ranging across all continents except Antarctica
                   </Typography>

@@ -14,6 +14,7 @@ import UtilBars from '../Utilities/chart';
 import List from '@mui/material/List';
 import ModalUtil from './modal';
 import UtilList from './list';
+import Navbar from '../Navbar/index';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -63,6 +64,7 @@ export default function Utils({ open }) {
   return (
     <React.Fragment>
       <CssBaseline />
+      <Navbar />
       <Container
         maxWidth="xxl"
         sx={{
