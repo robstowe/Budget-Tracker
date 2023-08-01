@@ -10,9 +10,10 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import SignIn from './components/SignIn/';
 import SignUp from './components/SignUp'
 import Navbar from './components/Navbar';
-import Subs from './components/Subscriptions'
-import Leisure from './components/Leisure'
-import Utilities from './components/Utilities'
+import Subs from './components/Subscriptions';
+import Leisure from './components/Leisure';
+import Utilities from './components/Utilities';
+import Contact from './components/Contact';
 
 
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -45,7 +46,7 @@ export default function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        
+
         <Routes>
           <Route
             path="/"
@@ -57,23 +58,24 @@ export default function App() {
             </React.Fragment>
 
           } />
-          <Route 
-          path="/Subs"
-          element= {
-          <Subs/>}
-          />
+          <Route
+            path="/Subs"
+            element={<Subs />} />
           <Route
             path="/Leisure"
             element={<Leisure />} />
-            <Route
+          <Route
             path="/Utilities"
             element={<Utilities />} />
           <Route
             path="/sign-up"
             element={<SignUp />} />
-            
+          <Route
+            path="/contact"
+            element={<Contact />} />
+
         </Routes>
-       
+
 
       </Router>
     </ApolloProvider>

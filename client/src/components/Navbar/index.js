@@ -21,6 +21,9 @@ import MailIcon from '@mui/icons-material/Mail';
 import Dashboard from '../Dashboard';
 import AuthService from '../../utils/auth';
 import LogoutIcon from '@mui/icons-material/Logout';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
+import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
 
 const drawerWidth = 240;
 
@@ -113,9 +116,7 @@ export default function MiniDrawer() {
   ];
 
   const buttonData2 = [
-    { text: 'All mail', path: '/AllMail' },
-    { text: 'Trash', path: '/Trash' },
-    { text: 'Spam', path: '/Spam' },
+    { text: 'Contact Us', path: '/Contact' },
   ];
 
   return (
@@ -136,7 +137,7 @@ export default function MiniDrawer() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Mini variant drawer
+            Banana Budget Tracker
           </Typography>
 
             <IconButton
@@ -177,7 +178,7 @@ export default function MiniDrawer() {
                     justifyContent: 'center',
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {index % 2 === 0 ? <DashboardIcon /> : <SubscriptionsIcon />}
                 </ListItemIcon>
                 <ListItemText primary={button.text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
@@ -203,7 +204,7 @@ export default function MiniDrawer() {
                     justifyContent: 'center',
                   }}
                 >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {index % 2 === 0 ? <ConnectWithoutContactIcon /> : <MailIcon />}
                 </ListItemIcon>
                 <ListItemText primary={button.text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
