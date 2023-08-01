@@ -53,7 +53,7 @@ const resolvers = {
                 );
                  return leisure; 
     },
-    addUtility: async (parent, { name, price}, context) => {
+    addUtil: async (parent, { name, price}, context) => {
               const utility = await Utility.create({ name, price });
               await User.findOneAndUpdate(
               { email: context.user.email },

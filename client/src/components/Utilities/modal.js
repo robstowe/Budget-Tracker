@@ -15,7 +15,7 @@ function ModalUtil({ addUtility }) {
   const handleShow = () => setShow(true);
 
   const handleAmountChange = (event) => {
-    const enteredValue = event.target.value;
+    const enteredValue = +event.target.value;
     // Use a regular expression to check if the entered value matches the allowed pattern.
     // if (/^[0-9$.]*$/.test(enteredValue)) {
       setUtilityAmount(enteredValue);
@@ -36,7 +36,7 @@ function ModalUtil({ addUtility }) {
       
     }); console.log(data);
     // Add the new subscription to the list in the parent component (Subs.js)
-    addUtility({ utility: data.addUtility.name, amount: data.addUtility.price });
+    addUtility({ utility: data.addUtil.name, amount: data.addUtil.price });
     handleClose();
   };
 

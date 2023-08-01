@@ -59,7 +59,7 @@ const typeDefs = gql`
       price: Int!
       name: String!
     ): Leisure
-    addUtility(
+    addUtil(
       price: Int!
       name: String!
     ): Utility

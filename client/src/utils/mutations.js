@@ -44,8 +44,8 @@ mutation addLeisure($price: Int!, $name: String!) {
 `;
 
 export const ADD_UTILITY = gql`
-mutation addUtility($price: Int!, $name: String!) {
-  addUtility(price: $price, name: $name) {
+mutation addUtil($price: Int!, $name: String!) {
+  addUtil(price: $price, name: $name) {
     _id
     name
     price

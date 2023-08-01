@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
+import ModalUtil from './modal';
+
 
 function UtilList({ utilities, onDeleteUtility, onEditUtility }) {
   const [editIndex, setEditIndex] = useState(null);
