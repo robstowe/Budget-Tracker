@@ -2,30 +2,46 @@ import React, { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
+import { ADD_SUB } from '../../utils/mutations';
+import { ALL_CATEGORIES } from '../../utils/queries';
+import { useMutation, useQuery } from '@apollo/client';
+
 
 function ModalSub({ addSubscription }) {
   const [show, setShow] = useState(false);
-  const [subscriptionAmount, setSubscriptionAmount] = useState('$');
+  const [subscriptionAmount, setSubscriptionAmount] = useState(0);
   const [subscriptionName, setSubscriptionName] = useState('');
+  const [addSub, { error }] = useMutation(ADD_SUB);
+  const  {loading, data} = useQuery(ALL_CATEGORIES);
+
+  console.log(data);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
   const handleAmountChange = (event) => {
-    const enteredValue = event.target.value;
+    const enteredValue = +event.target.value;
+    console.log(typeof enteredValue);
     // Use a regular expression to check if the entered value matches the allowed pattern.
-    if (/^[0-9$.]*$/.test(enteredValue)) {
+    // if (/^[0-9$.]*$/.test(enteredValue)) {
       setSubscriptionAmount(enteredValue);
-    }
+    // }
   };
 
   const handleSubscriptionNameChange = (event) => {
     setSubscriptionName(event.target.value);
   };
 
-  const handleSaveChanges = () => {
+  const handleSaveChanges = async () => {
+    const {data} = await addSub({
+      variables:{
+        price: subscriptionAmount, 
+        name: subscriptionName,
+        category: "entertainment"
+      }
+    }); console.log(data);
     // Add the new subscription to the list in the parent component (Subs.js)
-    addSubscription({ subscription: subscriptionName, amount: subscriptionAmount });
+    addSubscription({ subscription: data.addSub.name, amount: data.addSub.price });
     handleClose();
   };
 
@@ -61,15 +77,16 @@ function ModalSub({ addSubscription }) {
                 onChange={handleAmountChange}
               />
             </Form.Group>
+            <Button variant="primary" onClick={handleSaveChanges}>
+            Save Changes
+          </Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleSaveChanges}>
-            Save Changes
-          </Button>
+          
         </Modal.Footer>
       </Modal>
     </>
