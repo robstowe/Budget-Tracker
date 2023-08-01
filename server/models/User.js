@@ -1,8 +1,6 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
-// const Subscription = require('./Subscription');
-const Utility = require('./Utility');
-const Leisure = require('./Leisure');
+
 
 
 const userSchema = new Schema({
@@ -21,8 +19,14 @@ const userSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'Subscription',
   }],
-  leisure: [Leisure.schema],
-  utility: [Utility.schema]
+  leisure: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Leisure',
+  }],
+  utility: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Utility',
+  }]
 });
 
 userSchema.pre('save', async function (next) {
