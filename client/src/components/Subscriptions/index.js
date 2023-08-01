@@ -14,6 +14,9 @@ import SubBars from '../Subscriptions/chart';
 import List from '@mui/material/List';
 import ModalSub from './modal';
 import SubList from './list';
+import Navbar from '../Navbar/index'
+
+
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -62,6 +65,7 @@ const Subs = ({ open }) => {
   return (
     <React.Fragment>
       <CssBaseline />
+      <Navbar />
       <Container
         maxWidth="xxl"
         sx={{
