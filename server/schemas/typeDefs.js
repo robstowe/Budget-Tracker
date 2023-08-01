@@ -10,10 +10,7 @@ const typeDefs = gql`
     utility: [Utility]
   }
 
-  type Category{
-    _id:ID
-    name:String!
-  }
+
 
   type Auth {
     token: ID!
@@ -24,7 +21,6 @@ const typeDefs = gql`
     users: [User]
     user(email: String!): User
     me: User
-    allCategories: [Category]
     subscriptions(email: String): [Subscription]
     subscription(subId: ID!): Subscription
     Leisures(email: String): [Leisure]
@@ -35,41 +31,35 @@ const typeDefs = gql`
   }
 
   type Subscription {
-    _id: ID
-    name: String
-    price: Int
-    category: String
+    _id: ID!
+    name: String!
+    price: Int!
   }
 
   type Leisure {
-    _id: ID
-    name: String
-    price: Int
-   category: String
+    _id: ID!
+    name: String!
+    price: Int!
   }
 
   type Utility {
-    _id: ID
-    name: String
-    price: Int
-    category: String
+    _id: ID!
+    name: String!
+    price: Int!
   }
 
   type Mutation {
     addUser(email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addSub(
-      category: String
       price: Int!
       name: String!
     ): Subscription
     addLeisure(
-      category: String
       price: Int!
       name: String!
     ): Leisure
     addUtility(
-      category: String
       price: Int!
       name: String!
     ): Utility
