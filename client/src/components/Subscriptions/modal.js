@@ -3,8 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { ADD_SUB } from '../../utils/mutations';
-import { ALL_CATEGORIES } from '../../utils/queries';
-import { useMutation, useQuery } from '@apollo/client';
+import { useMutation } from '@apollo/client';
 
 
 function ModalSub({ addSubscription }) {
@@ -12,9 +11,8 @@ function ModalSub({ addSubscription }) {
   const [subscriptionAmount, setSubscriptionAmount] = useState(0);
   const [subscriptionName, setSubscriptionName] = useState('');
   const [addSub, { error }] = useMutation(ADD_SUB);
-  const  {loading, data} = useQuery(ALL_CATEGORIES);
 
-  console.log(data);
+  
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -33,12 +31,13 @@ function ModalSub({ addSubscription }) {
   };
 
   const handleSaveChanges = async () => {
+    console.log('hello');
     const {data} = await addSub({
       variables:{
         price: subscriptionAmount, 
         name: subscriptionName,
-        category: "entertainment"
       }
+      
     }); console.log(data);
     // Add the new subscription to the list in the parent component (Subs.js)
     addSubscription({ subscription: data.addSub.name, amount: data.addSub.price });
