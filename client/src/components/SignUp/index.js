@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Avatar from '@mui/material/Avatar';
+import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
@@ -13,6 +13,8 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useMutation } from '@apollo/client';
 import { ADD_USER } from '../../utils/mutations';
 import Auth from '../../utils/auth'
+import MainImage from './assets/fintrackr_better.png';
+
 
 const darkTheme = createTheme({
   palette: {
@@ -84,9 +86,12 @@ const SignUp = () => {
               alignItems: 'center',
             }}
           >
-            <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-              <LockOutlinedIcon />
-            </Avatar>
+            <CardMedia
+              component="img"
+              height="auto" 
+              image={MainImage} 
+              alt="Main"
+            />
             <Typography component="h1" variant="h5">
               Sign Up
             </Typography>
