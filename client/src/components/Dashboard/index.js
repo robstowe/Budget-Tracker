@@ -14,6 +14,7 @@ import SubBars from '../Subscriptions/chart';
 import UtilBars from '../Utilities/chart';
 import LeisureBars from '../Leisure/chart';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Navbar from '../Navbar/index';
 
 const darkTheme = createTheme({
   palette: {
@@ -32,141 +33,245 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function Dashboard({ open }) {
   return (
 
-    <ThemeProvider theme={darkTheme}>
+<ThemeProvider theme={darkTheme}>
     <React.Fragment>
-      <CssBaseline />
-      <Container maxWidth="xxl"
+    <CssBaseline />
+    <Navbar />
+    <Container
+      maxWidth="xxl"
+      sx={{
+        bgcolor: 'grey',
+        minHeight: '100vh',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        flexDirection: 'column',
+      }}
+    >
+      <Box
+        display="grid"
+        gridTemplateColumns="repeat(3, 1fr)"
+        gap={2}
         sx={{
-          bgcolor: 'grey',
-          minHeight: '100vh',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexDirection: 'column',
-        }}>
-         <Box
-          display="grid"
-          gridTemplateColumns="repeat(3, 1fr)"
-          gap={2}
-          sx={{
-            maxWidth: '1200px',
-            width: '100%',
-            mt: 10, 
-            mb: 2 
-          }}>
-            
-          <Box display="grid" gridTemplateColumns="repeat(3, 1fr)" gap={2}>
-            <Box gridColumn="span 3">
-              <Card sx={{ maxWidth: 10000 }}>
-                <CardMedia
-                  sx={{ height: 140 }}
-                  image="/static/images/cards/contemplative-reptile.jpg"
-                  title="green iguana"
-                />
-                <CardContent sx={{ mt: 2, mb: 2 }}>
-                  <Typography  gutterBottom variant="h5" component="div">
-                    Lizard
-                  </Typography>
-                  <Typography sx={{ mt: 2, mb: 2 }} variant="body2" color="text.secondary">
-                    Lizards are a widespread group of squamate reptiles, with over 6,000
-                    species, ranging across all continents except Antarctica
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button size="small">Share</Button>
-                  <Button size="small">Learn More</Button>
-                </CardActions>
-              </Card>
-            </Box>
-            <Box gridColumn="span 1">
-            <Card sx={{ maxWidth: 10000 }}>
-               <SubBars />
-              </Card>
-            </Box>
-            <Box gridColumn="span 1">
-            <Card sx={{ maxWidth: 10000 }}>
-               <UtilBars />
-              </Card>
-            </Box>
-            <Box gridColumn="span 1">
-            <Card sx={{ maxWidth: 10000 }}>
-               <LeisureBars />
-              </Card>
-            </Box>
-            <Box gridColumn="span 3">
-              <Card sx={{ maxWidth: 10000 }}>
-                <CardMedia
-                  sx={{ height: 140 }}
-                  image="/static/images/cards/contemplative-reptile.jpg"
-                  title="green iguana"
-                />
-                <CardContent sx={{ mt: 2, mb: 2 }}>
-                  <Typography gutterBottom variant="h5" component="div">
-                    Lizard
-                  </Typography>
-                  <Typography sx={{ mt: 2, mb: 2 }} variant="body2" color="text.secondary">
-                    Lizards are a widespread group of squamate reptiles, with over 6,000
-                    species, ranging across all continents except Antarctica
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button size="small">Share</Button>
-                  <Button size="small">Learn More</Button>
-                </CardActions>
-              </Card>
-            </Box>
-            <Box gridColumn="span 3">
-              <Card sx={{ maxWidth: 10000 }}>
-                <CardMedia
-                  sx={{ height: 140 }}
-                  image="/static/images/cards/contemplative-reptile.jpg"
-                  title="green iguana"
-                />
-                <CardContent sx={{ mt: 2, mb: 2 }}>
-                  <Typography gutterBottom variant="h5" component="div">
-                    Lizard
-                  </Typography>
-                  <Typography sx={{ mt: 2, mb: 2 }} variant="body2" color="text.secondary">
-                    Lizards are a widespread group of squamate reptiles, with over 6,000
-                    species, ranging across all continents except Antarctica
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button size="small">Share</Button>
-                  <Button size="small">Learn More</Button>
-                </CardActions>
-              </Card>
-            </Box>
-            <Box gridColumn="span 3">
-              <Card sx={{ maxWidth: 10000 }}>
-                <CardMedia
-                  sx={{ height: 140 }}
-                  image="/static/images/cards/contemplative-reptile.jpg"
-                  title="green iguana"
-                />
-                <CardContent sx={{ mt: 2, mb: 2 }}>
-                  <Typography gutterBottom variant="h5" component="div">
-                    Lizard
-                  </Typography>
-                  <Typography sx={{ mt: 2, mb: 2 }}  variant="body2" color="text.secondary">
-                    Lizards are a widespread group of squamate reptiles, with over 6,000
-                    species, ranging across all continents except Antarctica
-                  </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button size="small">Share</Button>
-                  <Button size="small">Learn More</Button>
-                </CardActions>
-              </Card>
-            </Box>
-            
-            
-          </Box>
-
+          maxWidth: '1200px',
+          width: '100%',
+        }}
+      >
+        <Box gridColumn="span 3">
+          <Card>
+            <CardMedia image="/static/images/cards/contemplative-reptile.jpg" title="green iguana" />
+            <CardContent sx={{ mt: 2, mb: 2 }}>
+              <Typography gutterBottom variant="h5" component="div">
+                Welcome to Your Leisures!
+              </Typography>
+              <Typography sx={{ mt: 2, mb: 2 }} variant="body2" color="text.secondary">
+                Below, you will find a list of all leisures and their corresponding costs that you pay for on a monthly basis. Click the "Add Leisures" button to add additional leisures or click the trashcan icon to remove a leisure.
+              </Typography>
+              <Typography variant="body2" color="text.secondary">
+                The bar graph below will chart out your most expensive gfafsafas
+              </Typography>
+              
+            </CardContent>
+          </Card>
         </Box>
-      </Container>
-    </React.Fragment>
-      </ThemeProvider>
-  );
-}
+        <Box gridColumn="span 3" sx={{ justifyContent: 'center' }}>
+          <Card>
+            <CardContent>
+              <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
+                <Typography sx={{ mt: 2, mb: 2 }} variant="h6" component="div">
+                  Your Subscriptions
+                  
+                </Typography>
+              </Box>
+            </CardContent>
+            </Card>
+        </Box>
+        <Box gridColumn="span 3" sx={{ justifyContent: 'center' }}>
+          <Card>
+            <CardContent>
+              <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
+                <Typography sx={{ mt: 2, mb: 2 }} variant="h6" component="div">
+                  Your Utilities
+                  
+                </Typography>
+              </Box>
+            </CardContent>
+            </Card>
+        </Box>
+        <Box gridColumn="span 3" sx={{ justifyContent: 'center' }}>
+          <Card>
+            <CardContent>
+              <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
+                <Typography sx={{ mt: 2, mb: 2 }} variant="h6" component="div">
+                  Your Leisures
+                  
+                </Typography>
+              </Box>
+            </CardContent>
+            </Card>
+        </Box>
+        
+       
+        
+        
+
+        <Card>
+        <Box gridColumn="span 3" sx={{ width: "100%", maxWidth: '1200px', display: 'flex', justifyContent: 'center' }}>
+               <LeisureBars sx={{ padding: '5px' }}/>
+            </Box>
+              </Card>
+              <Card>
+        <Box gridColumn="span 3" sx={{ width: "100%", maxWidth: '1200px', display: 'flex', justifyContent: 'center' }}>
+               <LeisureBars sx={{ padding: '5px' }}/>
+            </Box>
+              </Card>
+              <Card>
+        <Box gridColumn="span 3" sx={{ width: "100%", maxWidth: '1200px', display: 'flex', justifyContent: 'center' }}>
+               <LeisureBars sx={{ padding: '5px' }}/>
+            </Box>
+              </Card>
+          </Box>
+        </Container>
+      </React.Fragment>
+    </ThemeProvider>
+);
+};
+
+//     <ThemeProvider theme={darkTheme}>
+//     <React.Fragment>
+//       <CssBaseline />
+//       <Container maxWidth="xxl"
+//         sx={{
+//           bgcolor: 'grey',
+//           minHeight: '100vh',
+//           display: 'flex',
+//           alignItems: 'center',
+//           justifyContent: 'center',
+//           flexDirection: 'column',
+//         }}>
+//          <Box
+//           display="grid"
+//           gridTemplateColumns="repeat(3, 1fr)"
+//           gap={2}
+//           sx={{
+//             maxWidth: '1200px',
+//             width: '100%',
+//             mt: 10, 
+//             mb: 2 
+//           }}>
+            
+//           <Box display="grid" gridTemplateColumns="repeat(3, 1fr)" gap={2}>
+//             <Box gridColumn="span 3">
+//               <Card sx={{ maxWidth: 10000 }}>
+//                 <CardMedia
+//                   sx={{ height: 140 }}
+//                   image="/static/images/cards/contemplative-reptile.jpg"
+//                   title="green iguana"
+//                 />
+//                 <CardContent sx={{ mt: 2, mb: 2 }}>
+//                   <Typography  gutterBottom variant="h5" component="div">
+//                     Lizard
+//                   </Typography>
+//                   <Typography sx={{ mt: 2, mb: 2 }} variant="body2" color="text.secondary">
+//                     Lizards are a widespread group of squamate reptiles, with over 6,000
+//                     species, ranging across all continents except Antarctica
+//                   </Typography>
+//                 </CardContent>
+//                 <CardActions>
+//                   <Button size="small">Share</Button>
+//                   <Button size="small">Learn More</Button>
+//                 </CardActions>
+//               </Card>
+//             </Box>
+//             <Box gridColumn="span 1">
+//             <Card sx={{ maxWidth: 10000 }}>
+//                <SubBars />
+//               </Card>
+//             </Box>
+//             <Box gridColumn="span 1">
+//             <Card sx={{ maxWidth: 10000 }}>
+//                <UtilBars />
+//               </Card>
+//             </Box>
+//             <Box gridColumn="span 1">
+//             <Card sx={{ maxWidth: 10000 }}>
+//                <LeisureBars />
+//               </Card>
+//             </Box>
+//             <Box gridColumn="span 3">
+//               <Card sx={{ maxWidth: 10000 }}>
+//                 <CardMedia
+//                   sx={{ height: 140 }}
+//                   image="/static/images/cards/contemplative-reptile.jpg"
+//                   title="green iguana"
+//                 />
+//                 <CardContent sx={{ mt: 2, mb: 2 }}>
+//                   <Typography gutterBottom variant="h5" component="div">
+//                     Lizard
+//                   </Typography>
+//                   <Typography sx={{ mt: 2, mb: 2 }} variant="body2" color="text.secondary">
+//                     Lizards are a widespread group of squamate reptiles, with over 6,000
+//                     species, ranging across all continents except Antarctica
+//                   </Typography>
+//                 </CardContent>
+//                 <CardActions>
+//                   <Button size="small">Share</Button>
+//                   <Button size="small">Learn More</Button>
+//                 </CardActions>
+//               </Card>
+//             </Box>
+//             <Box gridColumn="span 3">
+//               <Card sx={{ maxWidth: 10000 }}>
+//                 <CardMedia
+//                   sx={{ height: 140 }}
+//                   image="/static/images/cards/contemplative-reptile.jpg"
+//                   title="green iguana"
+//                 />
+//                 <CardContent sx={{ mt: 2, mb: 2 }}>
+//                   <Typography gutterBottom variant="h5" component="div">
+//                     Lizard
+//                   </Typography>
+//                   <Typography sx={{ mt: 2, mb: 2 }} variant="body2" color="text.secondary">
+//                     Lizards are a widespread group of squamate reptiles, with over 6,000
+//                     species, ranging across all continents except Antarctica
+//                   </Typography>
+//                 </CardContent>
+//                 <CardActions>
+//                   <Button size="small">Share</Button>
+//                   <Button size="small">Learn More</Button>
+//                 </CardActions>
+//               </Card>
+//             </Box>
+//             <Box gridColumn="span 3">
+//               <Card sx={{ maxWidth: 10000 }}>
+//                 <CardMedia
+//                   sx={{ height: 140 }}
+//                   image="/static/images/cards/contemplative-reptile.jpg"
+//                   title="green iguana"
+//                 />
+//                 <CardContent sx={{ mt: 2, mb: 2 }}>
+//                   <Typography gutterBottom variant="h5" component="div">
+//                     Lizard
+//                   </Typography>
+//                   <Typography sx={{ mt: 2, mb: 2 }}  variant="body2" color="text.secondary">
+//                     Lizards are a widespread group of squamate reptiles, with over 6,000
+//                     species, ranging across all continents except Antarctica
+//                   </Typography>
+//                 </CardContent>
+//                 <CardActions>
+//                   <Button size="small">Share</Button>
+//                   <Button size="small">Learn More</Button>
+//                 </CardActions>
+//               </Card>
+//             </Box>
+            
+            
+//           </Box>
+
+//         </Box>
+//       </Container>
+//     </React.Fragment>
+//       </ThemeProvider>
+//   );
+// }
 
