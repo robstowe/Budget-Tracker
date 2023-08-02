@@ -31,6 +31,8 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import BoltIcon from '@mui/icons-material/Bolt';
 import RowingIcon from '@mui/icons-material/Rowing';
 import SportsBasketballIcon from '@mui/icons-material/SportsBasketball';
+import Auth from '../../utils/auth';
+
 
 
 
@@ -69,7 +71,7 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'flex-end',
   padding: theme.spacing(0, 1),
-  
+
   ...theme.mixins.toolbar,
 }));
 
@@ -136,112 +138,121 @@ export default function MiniDrawer() {
   ];
 
   return (
-    <ThemeProvider theme={darkTheme}>
-    <Box sx={{ display: 'flex' }}>
-      <CssBaseline />
-      <AppBar position="fixed" open={open}>
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{
-              marginRight: 5,
-              ...(open && { display: 'none' }),
-            }}
-          >
-            <MenuIcon />
-          </IconButton>
-          <Box sx={{ width: 'auto' }}>
-            <Link to="/Dashboard">
-              <CardMedia
-                component="img"
-                height="50" 
-                width="auto"   
-                image={MainImage} 
-                alt="Main"
-              />
-              </Link>
+    <>
+      {
+        Auth.loggedIn() ? (
+          <ThemeProvider theme={darkTheme}>
+            <Box sx={{ display: 'flex' }}>
+              <CssBaseline />
+              <AppBar position="fixed" open={open}>
+                <Toolbar>
+                  <IconButton
+                    color="inherit"
+                    aria-label="open drawer"
+                    onClick={handleDrawerOpen}
+                    edge="start"
+                    sx={{
+                      marginRight: 5,
+                      ...(open && { display: 'none' }),
+                    }}
+                  >
+                    <MenuIcon />
+                  </IconButton>
+                  <Box sx={{ width: 'auto' }}>
+                    <Link to="/Dashboard">
+                      <CardMedia
+                        component="img"
+                        height="50"
+                        width="auto"
+                        image={MainImage}
+                        alt="Main"
+                      />
+                    </Link>
+                  </Box>
+
+                  <IconButton
+                    color="inherit"
+                    aria-label="logout"
+                    onClick={handleLogout}
+                    sx={{ marginLeft: 'auto' }}
+                  >
+                    <LogoutIcon />
+                  </IconButton>
+
+
+
+                </Toolbar>
+              </AppBar>
+              <Drawer variant="permanent" open={open}>
+                <DrawerHeader>
+                  <IconButton onClick={handleDrawerClose}>
+                    {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
+                  </IconButton>
+                </DrawerHeader>
+                <Divider />
+                <List>
+                  {buttonData1.map((button) => (
+                    <ListItem key={button.text} disablePadding sx={{ display: 'block' }}>
+                      <ListItemButton
+                        href={button.path}
+                        sx={{
+                          minHeight: 48,
+                          justifyContent: open ? 'initial' : 'center',
+                          px: 2.5,
+                        }}
+                      >
+                        <ListItemIcon
+                          sx={{
+                            minWidth: 0,
+                            mr: open ? 3 : 'auto',
+                            justifyContent: 'center',
+                          }}
+                        >
+                          {button.icon}
+                        </ListItemIcon>
+                        <ListItemText primary={button.text} sx={{ opacity: open ? 1 : 0 }} />
+                      </ListItemButton>
+                    </ListItem>
+                  ))}
+                </List>
+                <Divider />
+                <List>
+                  {buttonData2.map((button) => (
+                    <ListItem key={button.text} disablePadding sx={{ display: 'block' }}>
+                      <ListItemButton
+                        href={button.path}
+                        sx={{
+                          minHeight: 48,
+                          justifyContent: open ? 'initial' : 'center',
+                          px: 2.5,
+                        }}
+                      >
+                        <ListItemIcon
+                          sx={{
+                            minWidth: 0,
+                            mr: open ? 3 : 'auto',
+                            justifyContent: 'center',
+                          }}
+                        >
+                          {button.icon}
+                        </ListItemIcon>
+                        <ListItemText primary={button.text} sx={{ opacity: open ? 1 : 0 }} />
+                      </ListItemButton>
+                    </ListItem>
+                  ))}
+                </List>
+                <Divider />
+
+              </Drawer>
+              {/* <Dashboard open={open} /> */}
             </Box>
+          </ThemeProvider>
+        ) : (
+          <a href={"/"}></a>
+        )
+      }
+    </>
 
-            <IconButton
-            color="inherit"
-            aria-label="logout"
-            onClick={handleLogout}
-            sx={{ marginLeft: 'auto' }}
-            >
-              <LogoutIcon />
-            </IconButton>
-
-
-
-        </Toolbar>
-      </AppBar>
-      <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronRightIcon /> : <ChevronLeftIcon />}
-          </IconButton>
-        </DrawerHeader>
-        <Divider />
-        <List>
-      {buttonData1.map((button) => (
-        <ListItem key={button.text} disablePadding sx={{ display: 'block' }}>
-          <ListItemButton
-            href={button.path} 
-            sx={{
-              minHeight: 48,
-              justifyContent: open ? 'initial' : 'center',
-              px: 2.5,
-            }}
-          >
-            <ListItemIcon
-              sx={{
-                minWidth: 0,
-                mr: open ? 3 : 'auto',
-                justifyContent: 'center',
-              }}
-            >
-              {button.icon}
-            </ListItemIcon>
-            <ListItemText primary={button.text} sx={{ opacity: open ? 1 : 0 }} />
-          </ListItemButton>
-        </ListItem>
-      ))}
-    </List>
-    <Divider />
-    <List>
-      {buttonData2.map((button) => (
-        <ListItem key={button.text} disablePadding sx={{ display: 'block' }}>
-          <ListItemButton
-            href={button.path} 
-            sx={{
-              minHeight: 48,
-              justifyContent: open ? 'initial' : 'center',
-              px: 2.5,
-            }}
-          >
-            <ListItemIcon
-              sx={{
-                minWidth: 0,
-                mr: open ? 3 : 'auto',
-                justifyContent: 'center',
-              }}
-            >
-              {button.icon}
-            </ListItemIcon>
-            <ListItemText primary={button.text} sx={{ opacity: open ? 1 : 0 }} />
-          </ListItemButton>
-        </ListItem>
-      ))}
-    </List>
-        <Divider />
-
-      </Drawer>
-      {/* <Dashboard open={open} /> */}
-    </Box>
-    </ThemeProvider>
   );
 }
 

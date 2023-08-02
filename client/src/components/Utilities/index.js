@@ -16,6 +16,8 @@ import ModalUtil from './modal';
 import UtilList from './list';
 import Navbar from '../Navbar/index';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Auth from '../../utils/auth';
+
 
 const darkTheme = createTheme({
   palette: {
@@ -69,7 +71,10 @@ export default function Utils({ open }) {
     };
 
   return (
-    <ThemeProvider theme={darkTheme}>
+    <>
+    {
+      Auth.loggedIn() ? (
+<ThemeProvider theme={darkTheme}>
     <React.Fragment>
       <CssBaseline />
       <Navbar />
@@ -146,5 +151,10 @@ export default function Utils({ open }) {
       </Container>
     </React.Fragment>
     </ThemeProvider>
+      ) : (
+        <a href={'/'}>Please login to view</a>
+      )
+    }
+    </>
   );
 };
