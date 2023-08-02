@@ -23,9 +23,9 @@ function LeisureList({ leisures, onDeleteLeisure, onEditLeisure }) {
   };
 
   return (
-    <ListGroup>
+    <ListGroup >
       {leisures.map((leisure, index) => (
-        <ListGroup.Item key={index}>
+        <ListGroup.Item style={{backgroundColor: 'grey', color: 'black', borderColor: "black"}} key={index} >
           {editIndex === index ? (
             <>
               <input
@@ -40,14 +40,14 @@ function LeisureList({ leisures, onDeleteLeisure, onEditLeisure }) {
                 value={editLeisure.amount}
                 onChange={handleEditLeisureChange}
               />
-              <a href='#' onClick={handleSaveEdit} style={{ marginRight: '25px', marginLeft: '20px' }}>✔️</a>
+              <a href='#' onClick={handleSaveEdit} style={{ marginRight: '25px', marginLeft: '20px'}}>✔️</a>
               <a href='#' onClick={() => setEditIndex(null)} style={{ marginLeft: '25px' }}>❌</a>
             </>
           ) : (
             <>
               {leisure.leisure} - ${leisure.amount}
-              <a href='#' onClick={() => handleEditClick(index)} style={{ marginRight: '25px', marginLeft: '20px' }}>✎</a>
-              <a href='#' onClick={() => onDeleteLeisure(index)} style={{ marginLeft: '25px' }}>🗑️</a>
+              <a href='#' onClick={() => handleEditClick(index)} style={{ marginRight: '5px', marginLeft: '30px', color: 'black'}}>✎</a>
+              <a href='#' onClick={() => onDeleteLeisure(index)} style={{ marginLeft: '5px' }}>🗑️</a>
             </>
           )}
         </ListGroup.Item>
