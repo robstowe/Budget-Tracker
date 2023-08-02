@@ -1,0 +1,16 @@
+/* modal-dark-theme.css */
+.modal-content {
+    background-color: #1A2027; /* Dark background color */
+    color: #ffffff; /* Text color */
+  }
+  
+  .modal-header {
+    background-color: #222; /* Dark header background color */
+    color: #ffffff; /* Header text color */
+  }
+  
+  .modal-footer {
+    background-color: #222; /* Dark footer background color */
+    color: #ffffff; /* Footer text color */
+  }
+  
