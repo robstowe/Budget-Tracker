@@ -36,7 +36,6 @@ export default function Dashboard({ open }) {
 <ThemeProvider theme={darkTheme}>
     <React.Fragment>
     <CssBaseline />
-    <Navbar />
     <Container
       maxWidth="xxl"
       sx={{
@@ -62,13 +61,13 @@ export default function Dashboard({ open }) {
             <CardMedia image="/static/images/cards/contemplative-reptile.jpg" title="green iguana" />
             <CardContent sx={{ mt: 2, mb: 2 }}>
               <Typography gutterBottom variant="h5" component="div">
-                Welcome to Your Leisures!
+                Welcome to Your Dashboard!
               </Typography>
               <Typography sx={{ mt: 2, mb: 2 }} variant="body2" color="text.secondary">
-                Below, you will find a list of all leisures and their corresponding costs that you pay for on a monthly basis. Click the "Add Leisures" button to add additional leisures or click the trashcan icon to remove a leisure.
+                Below, you can find an overview of your monthly expenses broken out by categories, Subscriptions, Utilities, and Leisurely activities. 
               </Typography>
               <Typography variant="body2" color="text.secondary">
-                The bar graph below will chart out your most expensive gfafsafas
+                The bar graph below will help you to visualize where you are spending the most money, and allow you to dictate where you can either cut costs, or spend a bit more to give yourself flexibility! 
               </Typography>
               
             </CardContent>
