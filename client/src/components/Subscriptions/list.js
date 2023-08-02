@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import ModalSub from './modal';
+import './style.css'
+
 
 function SubList({ subscriptions, onDeleteSubscription, onEditSubscription }) {
   const [editIndex, setEditIndex] = useState(null);
@@ -24,10 +26,11 @@ function SubList({ subscriptions, onDeleteSubscription, onEditSubscription }) {
   return (
     <ListGroup>
       {subscriptions.map((subscription, index) => (
-        <ListGroup.Item style={{backgroundColor: 'grey', color: 'black', borderColor: "black"}} key={index}>
+        <ListGroup.Item  className='custom-font' style={{backgroundColor: 'grey', color: 'black', borderColor: "black", fontWeight: 'bold'}} key={index}>
           {editIndex === index ? (
             <>
               <input
+              className='custom-font'
                 type="text"
                 name="subscription"
                 value={editSubscription.subscription}
