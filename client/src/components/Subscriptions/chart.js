@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { BarChart } from '@mui/x-charts/BarChart';
 
-export default function SubBars() {
+export default function SubBars({ subscriptions }) {
+  console.log('subscriptions', subscriptions);
+  
+  
   return (
     <BarChart
       xAxis={[{ scaleType: 'band', data: ['group A', 'group B', 'group C'] }]}

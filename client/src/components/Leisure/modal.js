@@ -48,12 +48,12 @@ function ModalLeisure({ addLubby }) {
 
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
-          <Modal.Title>Add Your New Leisure</Modal.Title>
+          <Modal.Title style={{color: 'black'}}>Add Your New Leisure</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Enter Your favorite activities</Form.Label>
+              <Form.Label style={{color: 'black'}}>Enter Your favorite activities</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="ex. Netflix, Hulu, etc."
@@ -63,7 +63,7 @@ function ModalLeisure({ addLubby }) {
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-              <Form.Label>Enter your activities Amount</Form.Label>
+              <Form.Label style={{color: 'black'}}>Enter your activities Amount</Form.Label>
               <Form.Control
                 as="textarea"
                 rows={3}
