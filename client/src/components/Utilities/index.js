@@ -82,6 +82,12 @@ export default function Utils({ open }) {
           alignItems: 'center',
           justifyContent: 'center',
           flexDirection: 'column',
+          marginLeft: '64px',
+          marginTop: '64px',
+          marginRight: '50px',
+          paddingRight: '50px',
+          paddingLeft: '50px',
+
         }}
       >
         <Box
@@ -91,6 +97,8 @@ export default function Utils({ open }) {
           sx={{
             maxWidth: '1200px',
             width: '100%',
+            marginRight: '50px',
+            paddingRight: '50px'
           }}
         >
           <Box gridColumn="span 3">

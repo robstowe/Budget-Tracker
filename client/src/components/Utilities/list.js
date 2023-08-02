@@ -45,7 +45,7 @@ function UtilList({ utilities, onDeleteUtility, onEditUtility }) {
             </>
           ) : (
             <>
-              {utility.utility} - {utility.amount}
+              {utility.utility} - ${utility.amount}
               <a href='#' onClick={() => handleEditClick(index)} style={{ marginRight: '25px', marginLeft: '20px' }}>✎</a>
               <a href='#' onClick={() => onDeleteUtility(index)} style={{ marginLeft: '25px' }}>🗑️</a>
             </>
