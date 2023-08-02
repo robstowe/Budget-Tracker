@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BarChart } from '@mui/x-charts/BarChart';
 
-export default function LeisureBars({ leisures}) {
+export default function LeisureBars({leisures}) {
   console.log('leisure', leisures);
 
   const sortedLeisures = leisures.sort((a, b) => b.amount - a.amount);

@@ -14,10 +14,9 @@ import Subs from './components/Subscriptions';
 import Leisure from './components/Leisure';
 import Utilities from './components/Utilities';
 import Contact from './components/Contact';
-
-
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Dashboard from './components/Dashboard';
+
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -63,7 +62,7 @@ export default function App() {
             element={<Subs />} />
           <Route
             path="/Leisure"
-            element={<Leisure />} />
+            element={<Leisure/>} />
           <Route
             path="/Utilities"
             element={<Utilities />} />
