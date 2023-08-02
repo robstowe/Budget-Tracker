@@ -44,7 +44,7 @@ function SubList({ subscriptions, onDeleteSubscription, onEditSubscription }) {
             </>
           ) : (
             <>
-              {subscription.subscription} - {subscription.amount}
+              {subscription.subscription} - ${subscription.amount}
               <a href='#' onClick={() => handleEditClick(index)} style={{ marginRight: '25px', marginLeft: '20px' }}>✎</a>
               <a href='#' onClick={() => onDeleteSubscription(index)} style={{ marginLeft: '25px' }}>🗑️</a>
             </>

@@ -16,10 +16,11 @@ function ModalUtil({ addUtility }) {
 
   const handleAmountChange = (event) => {
     const enteredValue = +event.target.value;
+    console.log(typeof enteredValue);
     // Use a regular expression to check if the entered value matches the allowed pattern.
-    // if (/^[0-9$.]*$/.test(enteredValue)) {
+    if (/^\d+(\.\d{0,2})?$/.test(enteredValue)) {
       setUtilityAmount(enteredValue);
-    // }
+    }
   };
 
   const handleUtilityNameChange = (event) => {
@@ -65,9 +66,7 @@ function ModalUtil({ addUtility }) {
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
               <Form.Label style={{color: 'black'}}>Enter Utility Amount</Form.Label>
               <Form.Control
-                as="textarea"
-                rows={3}
-                type="text"
+                type="number"
                 value={utilityAmount}
                 onChange={handleAmountChange}
               />

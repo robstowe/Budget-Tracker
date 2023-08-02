@@ -45,7 +45,7 @@ function LeisureList({ leisures, onDeleteLeisure, onEditLeisure }) {
             </>
           ) : (
             <>
-              {leisure.leisure} - {leisure.amount}
+              {leisure.leisure} - ${leisure.amount}
               <a href='#' onClick={() => handleEditClick(index)} style={{ marginRight: '25px', marginLeft: '20px' }}>✎</a>
               <a href='#' onClick={() => onDeleteLeisure(index)} style={{ marginLeft: '25px' }}>🗑️</a>
             </>
