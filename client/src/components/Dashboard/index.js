@@ -13,6 +13,8 @@ import Typography from '@mui/material/Typography';
 import SubBars from '../Subscriptions/chart';
 import UtilBars from '../Utilities/chart';
 import LeisureBars from '../Leisure/chart';
+
+
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Navbar from '../Navbar/index';
 import MainImage from './assets/fintracker.png';
@@ -117,7 +119,7 @@ export default function Dashboard({ open }) {
         
 
         <Card>
-        <Box gridColumn="span 3" sx={{ width: "100%", maxWidth: '1200px', display: 'flex', justifyContent: 'center' }}>
+        {/* <Box gridColumn="span 3" sx={{ width: "100%", maxWidth: '1200px', display: 'flex', justifyContent: 'center' }}>
                <LeisureBars sx={{ padding: '5px' }}/>
             </Box>
               </Card>
@@ -129,7 +131,11 @@ export default function Dashboard({ open }) {
               <Card>
         <Box gridColumn="span 3" sx={{ width: "100%", maxWidth: '1200px', display: 'flex', justifyContent: 'center' }}>
                <LeisureBars sx={{ padding: '5px' }}/>
-            </Box>
+            </Box> */}
+            {/* {
+                leisures.length === 0 ? (<h1>no data</h1>) : (<LeisureBars leisures={leisures}/>)
+              } */}
+              
               </Card>
           </Box>
         </Container>
