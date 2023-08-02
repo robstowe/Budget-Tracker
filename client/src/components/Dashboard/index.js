@@ -15,6 +15,8 @@ import UtilBars from '../Utilities/chart';
 import LeisureBars from '../Leisure/chart';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Navbar from '../Navbar/index';
+import MainImage from './assets/fintracker.png';
+
 
 const darkTheme = createTheme({
   palette: {
