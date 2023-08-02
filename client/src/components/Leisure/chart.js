@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { BarChart } from '@mui/x-charts/BarChart';
 
-export default function LeisureBars() {
+export default function LeisureBars({ leisure}) {
+  console.log('leisure', leisure);
   return (
     <BarChart
       xAxis={[{ scaleType: 'band', data: ['group A', 'group B', 'group C'] }]}

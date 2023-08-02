@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { ADD_SUB } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
+import { red } from '@mui/material/colors';
 
 
 function ModalSub({ addSubscription }) {
@@ -52,12 +53,12 @@ function ModalSub({ addSubscription }) {
 
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
-          <Modal.Title>Add Your New Subscription</Modal.Title>
+          <Modal.Title style={{color: 'black'}}>Add Your New Subscription</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Enter Your Subscription</Form.Label>
+              <Form.Label style={{color: 'black'}}>Enter Your Subscription</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="ex. Netflix, Hulu, etc."
@@ -67,7 +68,7 @@ function ModalSub({ addSubscription }) {
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-              <Form.Label>Enter Subscription Amount</Form.Label>
+              <Form.Label style={{color: 'black'}}>Enter Subscription Amount</Form.Label>
               <Form.Control
                 as="textarea"
                 rows={3}
