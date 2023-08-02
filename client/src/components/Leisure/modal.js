@@ -4,6 +4,7 @@ import Form from 'react-bootstrap/Form';
 import Modal from 'react-bootstrap/Modal';
 import { ADD_LEISURE } from '../../utils/mutations';
 import { useMutation } from '@apollo/client';
+import './style.css';
 
 function ModalLeisure({ addLubby }) {
   const [show, setShow] = useState(false);
@@ -43,7 +44,7 @@ function ModalLeisure({ addLubby }) {
 
   return (
     <>
-<Button variant="secondary" onClick={handleShow} style={{color: 'black', fontWeight: 'bold', marginBottom: '20px', backgroundColor: 'grey'}}>
+<Button variant="secondary" onClick={handleShow} className='custom-button'>
         Add Leisures
       </Button>
 
