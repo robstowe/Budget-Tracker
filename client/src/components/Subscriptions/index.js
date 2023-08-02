@@ -14,7 +14,15 @@ import SubBars from '../Subscriptions/chart';
 import List from '@mui/material/List';
 import ModalSub from './modal';
 import SubList from './list';
-import Navbar from '../Navbar/index'
+import Navbar from '../Navbar/index';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
+
 
 
 
@@ -64,12 +72,13 @@ const Subs = ({ open }) => {
 
   return (
     <React.Fragment>
+      <ThemeProvider theme={darkTheme}>
       <CssBaseline />
       <Navbar />
       <Container
         maxWidth="xxl"
         sx={{
-          bgcolor: '#cfe8fc',
+          bgcolor: 'grey',
           minHeight: '100vh',
           display: 'flex',
           alignItems: 'center',
@@ -107,7 +116,7 @@ const Subs = ({ open }) => {
             <Card>
               <CardContent>
                 <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
-                  <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+                  <Typography sx={{ mt: 2, mb: 2 }} variant="h6" component="div">
                     Your Subscriptions
                     <SubList subscriptions={subscriptions} onDeleteSubscription={deleteSubscription} onEditSubscription={editSubscription} />
                   </Typography>
@@ -127,6 +136,7 @@ const Subs = ({ open }) => {
           </Box>
         </Box>
       </Container>
+      </ThemeProvider>
     </React.Fragment>
   );
 };

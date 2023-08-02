@@ -46,7 +46,7 @@ function ModalLeisure({ addLubby }) {
         Add Leisures
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>Add Your New Leisure</Modal.Title>
         </Modal.Header>

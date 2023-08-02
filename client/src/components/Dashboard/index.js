@@ -13,7 +13,13 @@ import Typography from '@mui/material/Typography';
 import SubBars from '../Subscriptions/chart';
 import UtilBars from '../Utilities/chart';
 import LeisureBars from '../Leisure/chart';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -26,11 +32,12 @@ const Item = styled(Paper)(({ theme }) => ({
 export default function Dashboard({ open }) {
   return (
 
+    <ThemeProvider theme={darkTheme}>
     <React.Fragment>
       <CssBaseline />
       <Container maxWidth="xxl"
         sx={{
-          bgcolor: '#cfe8fc',
+          bgcolor: 'grey',
           minHeight: '100vh',
           display: 'flex',
           alignItems: 'center',
@@ -159,6 +166,7 @@ export default function Dashboard({ open }) {
         </Box>
       </Container>
     </React.Fragment>
+      </ThemeProvider>
   );
 }
 
