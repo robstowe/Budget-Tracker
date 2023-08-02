@@ -17,15 +17,21 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
-// import Dashboard from '../Dashboard';
 import AuthService from '../../utils/auth';
+import { Link } from 'react-router-dom';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import MainImage from './assets/fintrackr_better.png';
+
 import LogoutIcon from '@mui/icons-material/Logout';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
 import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
-import MainImage from './assets/fintrackr_better.png';
+import MailIcon from '@mui/icons-material/Mail';
+import MailOutlineIcon from '@mui/icons-material/MailOutline';
+import BoltIcon from '@mui/icons-material/Bolt';
+import RowingIcon from '@mui/icons-material/Rowing';
+import SportsBasketballIcon from '@mui/icons-material/SportsBasketball';
+
 
 
 const darkTheme = createTheme({
@@ -119,14 +125,14 @@ export default function MiniDrawer() {
   }
 
   const buttonData1 = [
-    { text: 'Dashboard', path: '/Dashboard' },
-    { text: 'Subscriptions', path: '/Subs' },
-    { text: 'Utilities', path: '/Utilities' },
-    { text: 'Leisure', path: '/Leisure' },
+    { text: 'Dashboard', path: '/Dashboard', icon: <DashboardIcon /> },
+    { text: 'Subscriptions', path: '/Subs', icon: <SubscriptionsIcon /> },
+    { text: 'Utilities', path: '/Utilities', icon: <BoltIcon /> },
+    { text: 'Leisure', path: '/Leisure', icon: <SportsBasketballIcon /> },
   ];
 
   const buttonData2 = [
-    { text: 'Contact Us', path: '/Contact' },
+    { text: 'Contact Us', path: '/Contact', icon: <MailOutlineIcon /> },
   ];
 
   return (
@@ -148,6 +154,7 @@ export default function MiniDrawer() {
             <MenuIcon />
           </IconButton>
           <Box sx={{ width: 'auto' }}>
+            <Link to="/Dashboard">
               <CardMedia
                 component="img"
                 height="50" 
@@ -155,6 +162,7 @@ export default function MiniDrawer() {
                 image={MainImage} 
                 alt="Main"
               />
+              </Link>
             </Box>
 
             <IconButton
@@ -178,56 +186,58 @@ export default function MiniDrawer() {
         </DrawerHeader>
         <Divider />
         <List>
-          {buttonData1.map((button, index) => (
-            <ListItem key={button.text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                href={button.path} 
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {index % 2 === 0 ? <DashboardIcon /> : <SubscriptionsIcon />}
-                </ListItemIcon>
-                <ListItemText primary={button.text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+      {buttonData1.map((button) => (
+        <ListItem key={button.text} disablePadding sx={{ display: 'block' }}>
+          <ListItemButton
+            href={button.path} 
+            sx={{
+              minHeight: 48,
+              justifyContent: open ? 'initial' : 'center',
+              px: 2.5,
+            }}
+          >
+            <ListItemIcon
+              sx={{
+                minWidth: 0,
+                mr: open ? 3 : 'auto',
+                justifyContent: 'center',
+              }}
+            >
+              {button.icon}
+            </ListItemIcon>
+            <ListItemText primary={button.text} sx={{ opacity: open ? 1 : 0 }} />
+          </ListItemButton>
+        </ListItem>
+      ))}
+    </List>
+    <Divider />
+    <List>
+      {buttonData2.map((button) => (
+        <ListItem key={button.text} disablePadding sx={{ display: 'block' }}>
+          <ListItemButton
+            href={button.path} 
+            sx={{
+              minHeight: 48,
+              justifyContent: open ? 'initial' : 'center',
+              px: 2.5,
+            }}
+          >
+            <ListItemIcon
+              sx={{
+                minWidth: 0,
+                mr: open ? 3 : 'auto',
+                justifyContent: 'center',
+              }}
+            >
+              {button.icon}
+            </ListItemIcon>
+            <ListItemText primary={button.text} sx={{ opacity: open ? 1 : 0 }} />
+          </ListItemButton>
+        </ListItem>
+      ))}
+    </List>
         <Divider />
-        <List>
-          {buttonData2.map((button, index) => (
-            <ListItem key={button.text} disablePadding sx={{ display: 'block' }}>
-              <ListItemButton
-                href={button.path} 
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? 'initial' : 'center',
-                  px: 2.5,
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : 'auto',
-                    justifyContent: 'center',
-                  }}
-                >
-                  {index % 2 === 0 ? <ConnectWithoutContactIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={button.text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
+
       </Drawer>
       {/* <Dashboard open={open} /> */}
     </Box>
