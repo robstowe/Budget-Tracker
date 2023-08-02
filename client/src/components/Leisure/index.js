@@ -15,6 +15,13 @@ import List from '@mui/material/List';
 import ModalLeisure from './modal';
 import LeisureList from './list';
 import Navbar from '../Navbar/index';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -62,13 +69,14 @@ export default function Subs({ open }) {
 
 
   return (
+    <ThemeProvider theme={darkTheme}>
     <React.Fragment>
     <CssBaseline />
     <Navbar />
     <Container
       maxWidth="xxl"
       sx={{
-        bgcolor: '#cfe8fc',
+        bgcolor: 'grey',
         minHeight: '100vh',
         display: 'flex',
         alignItems: 'center',
@@ -106,7 +114,7 @@ export default function Subs({ open }) {
           <Card>
             <CardContent>
               <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
-                <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+                <Typography sx={{ mt: 2, mb: 2 }} variant="h6" component="div">
                   Your Leisures
                   <LeisureList leisures={leisures} onDeleteLeisure={deleteLeisure} onEditLeisure={editLeisure} />
                 </Typography>
@@ -127,5 +135,6 @@ export default function Subs({ open }) {
       </Box>
     </Container>
   </React.Fragment>
+  </ThemeProvider>
 );
 };

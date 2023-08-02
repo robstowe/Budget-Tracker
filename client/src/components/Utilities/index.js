@@ -15,6 +15,13 @@ import List from '@mui/material/List';
 import ModalUtil from './modal';
 import UtilList from './list';
 import Navbar from '../Navbar/index';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -62,13 +69,14 @@ export default function Utils({ open }) {
     };
 
   return (
+    <ThemeProvider theme={darkTheme}>
     <React.Fragment>
       <CssBaseline />
       <Navbar />
       <Container
         maxWidth="xxl"
         sx={{
-          bgcolor: '#cfe8fc',
+          bgcolor: 'grey',
           minHeight: '100vh',
           display: 'flex',
           alignItems: 'center',
@@ -106,7 +114,7 @@ export default function Utils({ open }) {
             <Card>
               <CardContent>
                 <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
-                  <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+                  <Typography sx={{ mt: 2, mb: 2 }} variant="h6" component="div">
                     Your Utilities
                     <UtilList utilities={utilities} onDeleteUtility={deleteUtility} onEditUtility={editUtility} />
                   </Typography>
@@ -127,5 +135,6 @@ export default function Utils({ open }) {
         </Box>
       </Container>
     </React.Fragment>
+    </ThemeProvider>
   );
 };

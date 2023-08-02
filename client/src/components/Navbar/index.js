@@ -16,16 +16,23 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
-import Dashboard from '../Dashboard';
+// import Dashboard from '../Dashboard';
 import AuthService from '../../utils/auth';
 import LogoutIcon from '@mui/icons-material/Logout';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
 import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
 
 const drawerWidth = 240;
+
 
 const openedMixin = (theme) => ({
   width: drawerWidth,
@@ -120,6 +127,7 @@ export default function MiniDrawer() {
   ];
 
   return (
+    <ThemeProvider theme={darkTheme}>
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
@@ -214,6 +222,7 @@ export default function MiniDrawer() {
       </Drawer>
       {/* <Dashboard open={open} /> */}
     </Box>
+    </ThemeProvider>
   );
 }
 

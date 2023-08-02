@@ -46,7 +46,7 @@ function ModalUtil({ addUtility }) {
         Add Utility
       </Button>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
           <Modal.Title>Add Your New Utility</Modal.Title>
         </Modal.Header>
