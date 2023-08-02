@@ -131,7 +131,10 @@ const Subs = ({ open }) => {
 
           <Box gridColumn="span 3" sx={{ width: "100%", maxWidth: '1200px', display: 'flex', justifyContent: 'center' }}>
             <Card>
-              <SubBars subscriptions={subscriptions}/>
+              {
+                subscriptions.length === 0 ? (<h1>no data</h1>) : (<SubBars subscriptions={subscriptions}/>)
+              }
+              
             </Card>
           </Box>
         </Box>
