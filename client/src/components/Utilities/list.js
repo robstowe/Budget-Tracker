@@ -25,7 +25,7 @@ function UtilList({ utilities, onDeleteUtility, onEditUtility }) {
   return (
     <ListGroup>
       {utilities.map((utility, index) => (
-        <ListGroup.Item key={index}>
+        <ListGroup.Item style={{backgroundColor: 'grey', color: 'black', borderColor: "black"}} key={index}>
           {editIndex === index ? (
             <>
               <input
@@ -46,8 +46,8 @@ function UtilList({ utilities, onDeleteUtility, onEditUtility }) {
           ) : (
             <>
               {utility.utility} - {utility.amount}
-              <a href='#' onClick={() => handleEditClick(index)} style={{ marginRight: '25px', marginLeft: '20px' }}>✎</a>
-              <a href='#' onClick={() => onDeleteUtility(index)} style={{ marginLeft: '25px' }}>🗑️</a>
+              <a href='#' onClick={() => handleEditClick(index)} style={{ marginRight: '5px', marginLeft: '30px', color: 'black' }}>✎</a>
+              <a href='#' onClick={() => onDeleteUtility(index)} style={{ marginLeft: '5px'}}>🗑️</a>
             </>
           )}
         </ListGroup.Item>
