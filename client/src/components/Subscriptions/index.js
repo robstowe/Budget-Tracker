@@ -16,6 +16,7 @@ import ModalSub from './modal';
 import SubList from './list';
 import Navbar from '../Navbar/index';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Auth from '../../utils/auth';
 
 const darkTheme = createTheme({
   palette: {
@@ -71,81 +72,89 @@ const Subs = ({ open }) => {
   };
 
   return (
-    <React.Fragment>
-      <ThemeProvider theme={darkTheme}>
-      <CssBaseline />
-      <Navbar />
-      <Container
-        maxWidth="xxl"
-        sx={{
-          bgcolor: 'grey',
-          minHeight: '100vh',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          flexDirection: 'column',
-          marginLeft: '64px',
-          marginTop: '64px',
-          paddingLeft: '50px',
-        }}
-      >
-        <Box
-          display="grid"
-          gridTemplateColumns="repeat(3, 1fr)"
-          gap={2}
+    <>
+    {
+      Auth.loggedIn() ? (
+        <React.Fragment>
+        <ThemeProvider theme={darkTheme}>
+        <CssBaseline />
+        <Navbar />
+        <Container
+          maxWidth="xxl"
           sx={{
-            maxWidth: '1200px',
-            width: '100%',
-            marginRight: '50px',
-            paddingRight: '50px'
+            bgcolor: 'grey',
+            minHeight: '100vh',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flexDirection: 'column',
+            marginLeft: '64px',
+            marginTop: '64px',
+            paddingLeft: '50px',
           }}
         >
-          <Box gridColumn="span 3">
-            <Card>
-              <CardMedia image="/static/images/cards/contemplative-reptile.jpg" title="green iguana" />
-              <CardContent sx={{ mt: 2, mb: 2 }}>
-                <Typography gutterBottom variant="h5" component="div">
-                  Welcome to Your Subscriptions!
-                </Typography>
-                <Typography sx={{ mt: 2, mb: 2 }} variant="body2" color="text.secondary">
-                  Below, you will find a list of all subscriptions and their corresponding costs that you pay for on a monthly basis. Click the "Add Sub" button to add additional subscriptions or click the trashcan icon to remove a subscription.
-                </Typography>
-                <Typography variant="body2" color="text.secondary">
-                  The bar graph below will chart out your most expensive subscriptions
-                </Typography>
-              </CardContent>
-            </Card>
-          </Box>
-
-          <Box gridColumn="span 3" sx={{ justifyContent: 'center' }}>
-            <Card>
-              <CardContent>
-                <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
-                  <Typography sx={{ mt: 2, mb: 2 }} variant="h6" component="div">
-                    Your Subscriptions
-                    <SubList subscriptions={subscriptions} onDeleteSubscription={deleteSubscription} onEditSubscription={editSubscription} />
+          <Box
+            display="grid"
+            gridTemplateColumns="repeat(3, 1fr)"
+            gap={2}
+            sx={{
+              maxWidth: '1200px',
+              width: '100%',
+              marginRight: '50px',
+              paddingRight: '50px'
+            }}
+          >
+            <Box gridColumn="span 3">
+              <Card>
+                <CardMedia image="/static/images/cards/contemplative-reptile.jpg" title="green iguana" />
+                <CardContent sx={{ mt: 2, mb: 2 }}>
+                  <Typography gutterBottom variant="h5" component="div">
+                    Welcome to Your Subscriptions!
                   </Typography>
-                </Box>
-              </CardContent>
-
-              <CardActions sx={{ justifyContent: 'center' }}>
-                <ModalSub addSubscription={addSubscription} />
-              </CardActions>
-            </Card>
+                  <Typography sx={{ mt: 2, mb: 2 }} variant="body2" color="text.secondary">
+                    Below, you will find a list of all subscriptions and their corresponding costs that you pay for on a monthly basis. Click the "Add Sub" button to add additional subscriptions or click the trashcan icon to remove a subscription.
+                  </Typography>
+                  <Typography variant="body2" color="text.secondary">
+                    The bar graph below will chart out your most expensive subscriptions
+                  </Typography>
+                </CardContent>
+              </Card>
+            </Box>
+  
+            <Box gridColumn="span 3" sx={{ justifyContent: 'center' }}>
+              <Card>
+                <CardContent>
+                  <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
+                    <Typography sx={{ mt: 2, mb: 2 }} variant="h6" component="div">
+                      Your Subscriptions
+                      <SubList subscriptions={subscriptions} onDeleteSubscription={deleteSubscription} onEditSubscription={editSubscription} />
+                    </Typography>
+                  </Box>
+                </CardContent>
+  
+                <CardActions sx={{ justifyContent: 'center' }}>
+                  <ModalSub addSubscription={addSubscription} />
+                </CardActions>
+              </Card>
+            </Box>
+  
+            <Box gridColumn="span 3" sx={{ width: "100%", maxWidth: '1200px', display: 'flex', justifyContent: 'center' }}>
+              <Card>
+                {
+                  subscriptions.length === 0 ? (<h1>no data</h1>) : (<SubBars subscriptions={subscriptions}/>)
+                }
+                
+              </Card>
+            </Box>
           </Box>
-
-          <Box gridColumn="span 3" sx={{ width: "100%", maxWidth: '1200px', display: 'flex', justifyContent: 'center' }}>
-            <Card>
-              {
-                subscriptions.length === 0 ? (<h1>no data</h1>) : (<SubBars subscriptions={subscriptions}/>)
-              }
-              
-            </Card>
-          </Box>
-        </Box>
-      </Container>
-      </ThemeProvider>
-    </React.Fragment>
+        </Container>
+        </ThemeProvider>
+      </React.Fragment>
+      ) : (
+        <a href={"/"}>Please login to view</a>
+      )
+    }
+   </>
   );
 };
 
