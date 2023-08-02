@@ -22,9 +22,9 @@ function ModalSub({ addSubscription }) {
     const enteredValue = +event.target.value;
     console.log(typeof enteredValue);
     // Use a regular expression to check if the entered value matches the allowed pattern.
-    // if (/^[0-9$.]*$/.test(enteredValue)) {
+    if (/^[0-9$.]*$/.test(enteredValue)) {
       setSubscriptionAmount(enteredValue);
-    // }
+    }
   };
 
   const handleSubscriptionNameChange = (event) => {
