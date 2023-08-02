@@ -33,34 +33,34 @@ const typeDefs = gql`
   type Subscription {
     _id: ID!
     name: String!
-    price: Int!
+    price: Float!
   }
 
   type Leisure {
     _id: ID!
     name: String!
-    price: Int!
+    price: Float!
   }
 
   type Utility {
     _id: ID!
     name: String!
-    price: Int!
+    price: Float!
   }
 
   type Mutation {
     addUser(email: String!, password: String!): Auth
     login(email: String!, password: String!): Auth
     addSub(
-      price: Int!
+      price: Float!
       name: String!
     ): Subscription
     addLeisure(
-      price: Int!
+      price: Float!
       name: String!
     ): Leisure
     addUtil(
-      price: Int!
+      price: Float!
       name: String!
     ): Utility
     removeSub(subId: ID!): Subscription
