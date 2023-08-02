@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import ModalUtil from './modal';
+import './style.css'
 
 
 function UtilList({ utilities, onDeleteUtility, onEditUtility }) {
@@ -25,10 +26,11 @@ function UtilList({ utilities, onDeleteUtility, onEditUtility }) {
   return (
     <ListGroup>
       {utilities.map((utility, index) => (
-        <ListGroup.Item style={{backgroundColor: 'grey', color: 'black', borderColor: "black"}} key={index}>
+        <ListGroup.Item className='custom-font' style={{backgroundColor: 'grey', color: 'black', borderColor: "black", fontWeight: 'bold'}} key={index}>
           {editIndex === index ? (
             <>
               <input
+                className='custom-font'
                 type="text"
                 name="utility"
                 value={editUtility.utility}

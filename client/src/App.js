@@ -16,6 +16,7 @@ import Utilities from './components/Utilities';
 import Contact from './components/Contact';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Dashboard from './components/Dashboard';
+import { isAuthenticated } from './utils/auth';
 
 
 const httpLink = createHttpLink({

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Form, Button, Container, Row, Col, Card } from 'react-bootstrap';
-import Navbar from '../Navbar/index'
+import Navbar from '../Navbar/index';
+
 
 export default function Contact() {
 
@@ -53,7 +54,6 @@ export default function Contact() {
     const regexPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regexPattern.test(email);
   };
-
 
   return (
 
