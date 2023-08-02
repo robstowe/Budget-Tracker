@@ -60,7 +60,8 @@ export default function Contact() {
     <Container style={{marginTop: "100px"}}>
     <Navbar />
     <Card style={{
-        
+      margin: '50px',
+      backgroundColor: "grey"        
     }}>
       <Row>
         <Col>
@@ -70,7 +71,7 @@ export default function Contact() {
           className="mb-3"
           style={{ fontSize: '25px', margin: '10px'}}
           controlId="exampleForm.ControlInput1">
-              <Form.Label>What's Your Name?</Form.Label>
+              <Form.Label style={{color: "black", fontWeight: 'bold'}}>What's Your Name?</Form.Label>
               <Form.Control 
               type="text" 
               placeholder="First & Last Name"
@@ -78,6 +79,7 @@ export default function Contact() {
               onChange={handleNameChange}
               isValid={name.length >= 8}
               isInvalid={validationError !== '' && name.length < 8}
+              style={{ backgroundColor: "grey", color: "white", borderColor: 'black'}}
               />
               <Form.Control.Feedback type='invalid'>
                 {validationError}
@@ -88,14 +90,15 @@ export default function Contact() {
             className="mb-3"
             style={{ fontSize: '25px', margin: '10px'}} 
             controlId="exampleForm.ControlInput1">
-              <Form.Label>Email Address</Form.Label>
+              <Form.Label style={{color: "black", fontWeight: 'bold'}}>Email Address</Form.Label>
               <Form.Control
               type="email" 
               placeholder="name@email.com"
               value={email}
               onChange={handleEmailChange}
               isValid={validateEmail(email)}
-              isInvalid={validationError !== '' && !validateEmail(email)}/>
+              isInvalid={validationError !== '' && !validateEmail(email)}
+              style={{ backgroundColor: "grey", color: "white", borderColor: 'black'}}/>
               <Form.Control.Feedback type='invalid'>
                 {validationError}
               </Form.Control.Feedback>
@@ -105,7 +108,7 @@ export default function Contact() {
             className="mb-3" 
             controlId="exampleForm.ControlTextarea1"
             style={{ fontSize: '25px', margin: '10px'}}>
-              <Form.Label>Write Me a Message!</Form.Label>
+              <Form.Label style={{color: "black", fontWeight: 'bold'}}>Write Me a Message!</Form.Label>
               <Form.Control 
               as="textarea"
               placeholder="Write us a Message!" 
@@ -113,13 +116,14 @@ export default function Contact() {
               value={message}
               onChange={handleMessageChange}
               isValid={message.length >= 10}
-              isInvalid={validationError !== '' && message.length < 10}/>
+              isInvalid={validationError !== '' && message.length < 10}
+              style={{ backgroundColor: "grey", color: "white", borderColor: 'black'}}/>
               <Form.Control.Feedback type='invalid'>
                 {validationError}
               </Form.Control.Feedback>
             </Form.Group>
 
-            <Button type='submit'style={{margin: '10px'}}>Send</Button>
+            <Button type='submit' style={{margin: '10px'}} variant='dark'>Send</Button>
 
           </Form>
         </Col>

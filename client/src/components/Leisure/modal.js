@@ -43,7 +43,7 @@ function ModalLeisure({ addLubby }) {
 
   return (
     <>
-<Button variant="primary" onClick={handleShow}>
+<Button variant="secondary" onClick={handleShow} style={{color: 'black', fontWeight: 'bold', marginBottom: '20px', backgroundColor: 'grey'}}>
         Add Leisures
       </Button>
 

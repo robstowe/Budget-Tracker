@@ -119,7 +119,7 @@ export default function Subs({open}) {
           <Card>
             <CardContent>
               <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
-                <Typography sx={{ mt: 2, mb: 2 }} variant="h6" component="div">
+                <Typography sx={{ mt: 2, mb: 2}} variant="h6" component="div">
                   Your Leisures
                   <LeisureList leisures={leisures} onDeleteLeisure={deleteLeisure} onEditLeisure={editLeisure} />
                 </Typography>
