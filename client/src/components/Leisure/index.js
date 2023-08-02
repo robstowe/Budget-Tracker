@@ -35,7 +35,7 @@ const Demo = styled('div')(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
 }));
 
-export default function Subs({ open }) {
+export default function Subs({open}) {
   const [dense, setDense] = React.useState(false);
   const [secondary, setSecondary] = React.useState(false);
   const [leisures, setLeisures] = useState([]);
