@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { styled, useTheme } from '@mui/material/styles';
+import CardMedia from '@mui/material/CardMedia';
 import Box from '@mui/material/Box';
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
@@ -24,6 +25,8 @@ import DashboardIcon from '@mui/icons-material/Dashboard';
 import SubscriptionsIcon from '@mui/icons-material/Subscriptions';
 import ConnectWithoutContactIcon from '@mui/icons-material/ConnectWithoutContact';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
+import MainImage from './assets/fintrackr_better.png';
+
 
 const darkTheme = createTheme({
   palette: {
@@ -144,9 +147,15 @@ export default function MiniDrawer() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap component="div">
-            Banana Budget Tracker
-          </Typography>
+          <Box sx={{ width: 'auto' }}>
+              <CardMedia
+                component="img"
+                height="50" 
+                width="auto"   
+                image={MainImage} 
+                alt="Main"
+              />
+            </Box>
 
             <IconButton
             color="inherit"
