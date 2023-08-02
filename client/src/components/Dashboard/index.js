@@ -34,7 +34,11 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-export default function Dashboard({ open }) {
+export default function Dashboard({ open}) {
+  console.log(localStorage.getItem('leisures'));
+  const leisures = JSON.parse(localStorage.getItem('leisures')) || [];
+  const subscriptions = JSON.parse(localStorage.getItem('subscriptions')) || [];
+  const utilities = JSON.parse(localStorage.getItem('utilities')) || [];
   return (
 
 <ThemeProvider theme={darkTheme}>
@@ -83,7 +87,9 @@ export default function Dashboard({ open }) {
               <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
                 <Typography sx={{ mt: 2, mb: 2 }} variant="h6" component="div">
                   Your Subscriptions
-                  
+                  {
+                subscriptions.length === 0 ? (<h1>no data</h1>) : (<SubBars subscriptions={subscriptions}/>)
+              }
                 </Typography>
               </Box>
             </CardContent>
@@ -95,7 +101,9 @@ export default function Dashboard({ open }) {
               <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
                 <Typography sx={{ mt: 2, mb: 2 }} variant="h6" component="div">
                   Your Utilities
-                  
+                  {
+                utilities.length === 0 ? (<h1>no data</h1>) : (<UtilBars utilities={utilities}/>)
+              }
                 </Typography>
               </Box>
             </CardContent>
@@ -107,7 +115,9 @@ export default function Dashboard({ open }) {
               <Box sx={{ display: 'flex', justifyContent: 'space-around' }}>
                 <Typography sx={{ mt: 2, mb: 2 }} variant="h6" component="div">
                   Your Leisures
-                  
+                  {
+                leisures.length === 0 ? (<h1>no data</h1>) : (<LeisureBars leisures={leisures}/>)
+              }
                 </Typography>
               </Box>
             </CardContent>
@@ -132,9 +142,9 @@ export default function Dashboard({ open }) {
         <Box gridColumn="span 3" sx={{ width: "100%", maxWidth: '1200px', display: 'flex', justifyContent: 'center' }}>
                <LeisureBars sx={{ padding: '5px' }}/>
             </Box> */}
-            {/* {
-                leisures.length === 0 ? (<h1>no data</h1>) : (<LeisureBars leisures={leisures}/>)
-              } */}
+           
+
+
               
               </Card>
           </Box>
