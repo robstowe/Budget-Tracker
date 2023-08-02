@@ -43,7 +43,7 @@ function ModalUtil({ addUtility }) {
 
   return (
     <>
-<Button variant="secondary" onClick={handleShow} style={{color: 'black', fontWeight: 'bold', marginBottom: '20px', backgroundColor: 'grey'}}>
+<Button variant="secondary" onClick={handleShow} className='custom-button'>
         Add Utility
       </Button>
 

@@ -3,3 +3,16 @@
   .custom-font {
     font-family: 'Indie Flower', cursive;
   }
+
+  .custom-button {
+  color: black;
+  font-weight: bold;
+  margin-bottom: 20px;
+  background-color: grey;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.custom-button:hover {
+  background-color: lightgrey;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
