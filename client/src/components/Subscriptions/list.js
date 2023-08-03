@@ -26,11 +26,11 @@ function SubList({ subscriptions, onDeleteSubscription, onEditSubscription }) {
   return (
     <ListGroup>
       {subscriptions.map((subscription, index) => (
-        <ListGroup.Item  className='custom-font' style={{backgroundColor: 'grey', color: 'black', borderColor: "black", fontWeight: 'bold'}} key={index}>
+        <ListGroup.Item className='custom-font' style={{ backgroundColor: 'grey', color: 'black', borderColor: "black", fontWeight: 'bold' }} key={index}>
           {editIndex === index ? (
             <>
               <input
-              className='custom-font'
+                className='custom-font'
                 type="text"
                 name="subscription"
                 value={editSubscription.subscription}
@@ -59,27 +59,6 @@ function SubList({ subscriptions, onDeleteSubscription, onEditSubscription }) {
 }
 
 export default SubList;
-
-
-
-// import React from 'react';
-// import ListGroup from 'react-bootstrap/ListGroup';
-
-// function SubList({ subscriptions, onDeleteSubscription }) {
-//   return (
-//     <ListGroup>
-//       {subscriptions.map((subscription, index) => (
-//         <ListGroup.Item key={index}>
-//           {subscription.subscription} - {subscription.amount}
-//           <a href='' style={{ marginRight: '25px', marginLeft: '20px' }}>✎</a>
-//           <a href='' onClick={() => onDeleteSubscription(index)} style={{ marginLeft: '25x' }}>🗑️</a>
-//         </ListGroup.Item>
-//       ))}
-//     </ListGroup>
-//   );
-// }
-
-// export default SubList;
 
 
 

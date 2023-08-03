@@ -29,12 +29,12 @@ function ModalUtil({ addUtility }) {
 
   const handleSaveChanges = async () => {
     console.log('hello');
-    const {data} = await addUtil({
-      variables:{
-        price: utilityAmount, 
+    const { data } = await addUtil({
+      variables: {
+        price: utilityAmount,
         name: utilityName,
       }
-      
+
     }); console.log(data);
     // Add the new subscription to the list in the parent component (Subs.js)
     addUtility({ utility: data.addUtil.name, amount: data.addUtil.price });
@@ -43,18 +43,18 @@ function ModalUtil({ addUtility }) {
 
   return (
     <>
-<Button variant="secondary" onClick={handleShow} className='custom-button'>
+      <Button variant="secondary" onClick={handleShow} className='custom-button'>
         Add Utility
       </Button>
 
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
-          <Modal.Title style={{color: 'black'}}>Add Your New Utility</Modal.Title>
+          <Modal.Title style={{ color: 'black' }}>Add Your New Utility</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label style={{color: 'black'}}>Enter Your Utilities</Form.Label>
+              <Form.Label style={{ color: 'black' }}>Enter Your Utilities</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="ex. Netflix, Hulu, etc."
@@ -64,7 +64,7 @@ function ModalUtil({ addUtility }) {
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-              <Form.Label style={{color: 'black'}}>Enter Utility Amount</Form.Label>
+              <Form.Label style={{ color: 'black' }}>Enter Utility Amount</Form.Label>
               <Form.Control
                 type="number"
                 value={utilityAmount}
@@ -72,15 +72,15 @@ function ModalUtil({ addUtility }) {
               />
             </Form.Group>
             <Button variant="primary" onClick={handleSaveChanges}>
-            Save Changes
-          </Button>
+              Save Changes
+            </Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          
+
         </Modal.Footer>
       </Modal>
     </>

@@ -88,8 +88,8 @@ const SignUp = () => {
           >
             <CardMedia
               component="img"
-              height="auto" 
-              image={MainImage} 
+              height="auto"
+              image={MainImage}
               alt="Main"
             />
             <Typography component="h1" variant="h5">

@@ -132,17 +132,7 @@ export default function Dashboard({ open }) {
                       </CardContent>
                     </Card>
                   </Box>
-
-
-
-
-
                   <Card>
-
-
-
-
-
                   </Card>
                 </Box>
               </Container>
