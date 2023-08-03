@@ -9,6 +9,10 @@ Future updates will include: a monthly budget at the top of the dashboard that w
 
 ## App Screenshot
 
+## Deploy & Repo Links
+- Deploy: https://dry-citadel-57402-014123fe6f9a.herokuapp.com/
+- Repo: https://github.com/robstowe/Budget-Tracker
+
 ## Table of Contents
 - [Installation](#installation)
 - [Contributions](#contributions)
