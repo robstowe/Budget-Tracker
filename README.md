@@ -8,6 +8,7 @@ Users can then navigate to each specific tab through the navbar on the left by c
 Future updates will include: a monthly budget at the top of the dashboard that will deduct money for easy expense from the three respective categories to ensure the user is staying within their budget for that month.
 
 ## App Screenshot
+<img width="1335" alt="screenshot" src="https://github.com/robstowe/Budget-Tracker/assets/131802980/9b2cfe46-1d0f-4d5b-8e34-4369146b031b">
 
 ## Deploy & Repo Links
 - Deploy: https://dry-citadel-57402-014123fe6f9a.herokuapp.com/
