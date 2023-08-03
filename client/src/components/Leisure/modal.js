@@ -30,12 +30,12 @@ function ModalLeisure({ addLubby }) {
 
   const handleSaveChanges = async () => {
     console.log('hello');
-    const {data} = await addLeisure({
-      variables:{
-        price: leisureAmount, 
+    const { data } = await addLeisure({
+      variables: {
+        price: leisureAmount,
         name: leisureName,
       }
-      
+
     }); console.log(data);
     // Add the new subscription to the list in the parent component (Subs.js)
     addLubby({ leisure: data.addLeisure.name, amount: data.addLeisure.price });
@@ -44,18 +44,18 @@ function ModalLeisure({ addLubby }) {
 
   return (
     <>
-<Button variant="secondary" onClick={handleShow} className='custom-button'>
+      <Button variant="secondary" onClick={handleShow} className='custom-button'>
         Add Leisures
       </Button>
 
       <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton>
-          <Modal.Title style={{color: 'black'}}>Add Your New Leisure</Modal.Title>
+          <Modal.Title style={{ color: 'black' }}>Add Your New Leisure</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label style={{color: 'black'}}>Enter Your favorite activities</Form.Label>
+              <Form.Label style={{ color: 'black' }}>Enter Your favorite activities</Form.Label>
               <Form.Control
                 type="text"
                 placeholder="ex. Netflix, Hulu, etc."
@@ -65,7 +65,7 @@ function ModalLeisure({ addLubby }) {
               />
             </Form.Group>
             <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-              <Form.Label style={{color: 'black'}}>Enter your activities Amount</Form.Label>
+              <Form.Label style={{ color: 'black' }}>Enter your activities Amount</Form.Label>
               <Form.Control
                 type="number"
                 value={leisureAmount}
@@ -73,15 +73,15 @@ function ModalLeisure({ addLubby }) {
               />
             </Form.Group>
             <Button variant="primary" onClick={handleSaveChanges}>
-            Save Changes
-          </Button>
+              Save Changes
+            </Button>
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          
+
         </Modal.Footer>
       </Modal>
     </>

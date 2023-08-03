@@ -63,7 +63,7 @@ export default function App() {
             element={<Subs />} />
           <Route
             path="/Leisure"
-            element={<Leisure/>} />
+            element={<Leisure />} />
           <Route
             path="/Utilities"
             element={<Utilities />} />

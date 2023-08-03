@@ -178,9 +178,6 @@ export default function MiniDrawer() {
                   >
                     <LogoutIcon />
                   </IconButton>
-
-
-
                 </Toolbar>
               </AppBar>
               <Drawer variant="permanent" open={open}>
@@ -242,7 +239,6 @@ export default function MiniDrawer() {
                   ))}
                 </List>
                 <Divider />
-
               </Drawer>
               {/* <Dashboard open={open} /> */}
             </Box>
